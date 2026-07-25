@@ -460,7 +460,7 @@ input {
   margin: 0;
   color: var(--orange-hero);
   font-family: var(--font-heading);
-  font-size: clamp(2.6rem, 7.5vw, 4.5rem);
+  font-size: clamp(2.85rem, 8vw, 5rem);
   font-weight: var(--fw-semibold);
   font-variation-settings: "wdth" 75;
   line-height: 1.05;
@@ -492,7 +492,8 @@ input {
   z-index: -1;
   width: 108%;
   max-width: none;
-  height: 6px;
+  height: 0.085em;
+  min-height: 6px;
   transform: translateX(-50%);
   pointer-events: none;
 }
@@ -1604,7 +1605,7 @@ input {
   }
 
   .hero__title {
-    font-size: clamp(2.75rem, 5.2vw, 4rem);
+    font-size: clamp(3rem, 5.5vw, 4.4rem);
   }
 }
 
@@ -1620,7 +1621,7 @@ input {
   }
 
   .hero__title {
-    font-size: clamp(3.5rem, 4.2vw, 4.75rem);
+    font-size: clamp(3.85rem, 4.6vw, 5.25rem);
   }
 
   .hero__visual {
@@ -1761,7 +1762,7 @@ input {
   }
 
   .hero__title {
-    font-size: clamp(2.4rem, 9vw, 3rem);
+    font-size: clamp(2.55rem, 9.5vw, 3.25rem);
   }
 
   .hero__actions {
