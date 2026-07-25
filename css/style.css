@@ -1110,7 +1110,7 @@ input {
 .tip__title {
   margin: 0;
   max-width: 11em;
-  font-size: clamp(2.15rem, 5.5vw, 4.25rem);
+  font-size: 48px;
   font-weight: 600;
   font-variation-settings: "wdth" 75;
   line-height: 1.12;
@@ -1718,7 +1718,7 @@ input {
   }
 
   .tip__title {
-    font-size: clamp(2.75rem, 4.2vw, 4.5rem); /* ~64–72px */
+    font-size: 48px;
   }
 
   .reports__layout {
@@ -1753,7 +1753,7 @@ input {
   }
 
   .tip__title {
-    font-size: clamp(2.25rem, 3.8vw, 3rem);
+    font-size: 48px;
   }
 }
 
