@@ -591,10 +591,10 @@ input {
   pointer-events: none;
   background-image:
     radial-gradient(
-      circle 1.25px at center,
-      var(--social-grid-dot) 0,
-      var(--social-grid-dot) 1.25px,
-      transparent 1.6px
+      circle 1.25px at 50% 50%,
+      var(--social-grid-dot) 0%,
+      var(--social-grid-dot) 99%,
+      transparent 100%
     ),
     repeating-linear-gradient(
       to right,
@@ -614,8 +614,10 @@ input {
     var(--social-grid-size) var(--social-grid-size),
     auto,
     auto;
+  /* Center of each dot tile = mid of the 1px grid lines */
   background-position:
-    calc(var(--social-grid-size) / -2) calc(var(--social-grid-size) / -2),
+    calc(var(--social-grid-size) / -2 + 0.5px)
+      calc(var(--social-grid-size) / -2 + 0.5px),
     0 0,
     0 0;
   /* Keep grid fully visible through most of the section (past the copy),
