@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DebunkIt — The truth, as fast as the lie.</title>
+    <meta
+      name="description"
+      content="DebunkIt is a rapid-response fact-checking initiative countering misinformation targeting vulnerable communities."
+    />
+
+    <!-- Open Sans (body) + Open Sans Condensed via variable width axis -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,600..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="site-header" data-header>
+      <div class="header__bar">
+        <a class="logo" href="index.html" aria-label="DebunkIt home">
+          <img
+            src="images/logo/logo.svg"
+            alt="DebunkIt"
+            width="201"
+            height="32"
+            data-logo-image
+          />
+          <span class="logo__fallback" data-logo-fallback hidden>
+            Debunk<span>It</span>
+          </span>
+        </a>
+
+        <nav class="header__nav" aria-label="Primary">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="#about">About</a>
+          <a href="#factchecks">Factcheck</a>
+          <a href="#reports">Report</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="btn btn--header-cta" href="#contact">Report A Fake</a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          data-menu-toggle
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile" hidden>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="#about">About</a>
+        <a href="#factchecks">Factcheck</a>
+        <a href="#reports">Report</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn--header-cta mobile-nav__cta" href="#contact">Report A Fake</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ===================== HERO ===================== -->
+      <section class="hero is-visible" id="top" data-reveal>
+        <div class="shell hero__inner">
+          <div class="hero__copy">
+            <h1 class="hero__title">
+              <span class="hero__line hero__line--bold">The truth,</span>
+              <span class="hero__line">
+                as
+                <em class="hero__fast">
+                  fast
+                  <img
+                    class="hero__fast-line"
+                    src="images/icons/underline-fast.svg"
+                    alt=""
+                    width="135"
+                    height="6"
+                  />
+                </em>
+                as the lie.
+              </span>
+            </h1>
+
+            <p class="hero__lede">
+              DebunkIt is a rapid-response fact-checking initiative countering
+              misinformation, disinformation, conspiracy theories, and other harmful
+              narratives that target vulnerable communities on the digital platforms
+              where they spread, as they spread.
+            </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--outline" href="#factchecks">Our Factchecks</a>
+              <a class="btn btn--filled" href="#about">About Us</a>
+            </div>
+          </div>
+
+          <div class="hero__visual">
+            <img
+              src="images/hero/hero-graphic.png"
+              alt="Hands holding a smartphone framed by orange document fragments"
+              width="639"
+              height="644"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SOCIAL-FIRST ===================== -->
+      <section class="social" aria-label="Mission statement" data-reveal>
+        <div class="shell social__inner">
+          <p class="social__copy">
+            We are social-first by design.
+            <img
+              class="social__reaction"
+              src="jinishpotro/like.svg"
+              alt=""
+              width="60"
+              height="60"
+            />
+            Misinformation and disinformation
+            <img
+              class="social__reaction"
+              src="jinishpotro/angry.svg"
+              alt=""
+              width="60"
+              height="60"
+            />
+            do their damage on social media, in the posts, reels, replies, reposts,
+            and clips stripped of context.
+            <img
+              class="social__reaction"
+              src="jinishpotro/love.svg"
+              alt=""
+              width="60"
+              height="60"
+            />
+            <span class="social__underline">That is where we work.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== ABOUT ===================== -->
+      <section class="about" id="about" data-reveal>
+        <div class="shell about__grid">
+          <h2 class="about__title heading">About Us</h2>
+          <div class="about__content">
+            <ul class="about__tags" aria-label="Communities we focus on">
+              <li>Migrants</li>
+              <li>Muslims</li>
+              <li>Refugees</li>
+              <li>South Asians</li>
+            </ul>
+            <p class="about__body">
+              DebunkIt is a rapid-response initiative that counters misinformation,
+              disinformation, conspiracy theories, and other harmful narratives
+              targeting vulnerable communities across the United States.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== WHAT WE DO ===================== -->
+      <section class="what" id="what-we-do" data-reveal>
+        <div class="shell">
+          <header class="section-intro">
+            <h2 class="heading section-intro__title section-intro__title--navy">
+              What We Do
+            </h2>
+            <p>
+              We counter misinformation, disinformation, conspiracy theories, and
+              other harmful narratives where they spread—quickly, transparently, and
+              with the evidence to back it up. Our work runs across the full
+              lifecycle of a false claim: catching it early, debunking it, tracking
+              it over time, and helping others recognize it.
+            </p>
+          </header>
+
+          <div class="service-grid">
+            <article class="service-card" data-reveal>
+              <div class="service-card__icon">
+                <img src="images/icons/eye-fill.svg" alt="" width="35" height="35" />
+              </div>
+              <h3>Monitor in real time</h3>
+              <p>
+                We monitor major social platforms to rapidly identify emerging
+                harmful narratives, prioritizing checks by reach, velocity, and harm.
+              </p>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <div class="service-card__icon">
+                <img src="images/icons/send-backward.svg" alt="" width="35" height="35" />
+              </div>
+              <h3>Debunk with evidence</h3>
+              <p>
+                Every correction we publish is sourced, verified, with concise,
+                visual, shareable debunks tailored for each platform’s audience
+                effectively.
+              </p>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <div class="service-card__icon">
+                <img src="images/icons/drag-drop-fill.svg" alt="" width="35" height="35" />
+              </div>
+              <h3>Track recurring narratives</h3>
+              <p>
+                Disinformation rarely arrives once; narratives repeatedly resurface,
+                rebranded and recycled across platforms. We maintain a searchable
+                living database.
+              </p>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <div class="service-card__icon">
+                <img src="images/icons/git-merge-fill.svg" alt="" width="35" height="35" />
+              </div>
+              <h3>Map the amplifiers</h3>
+              <p>
+                We identify and map accounts, pages, groups, and networks spreading
+                falsehoods to reveal how harmful narratives are manufactured and
+                amplified.
+              </p>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <div class="service-card__icon">
+                <img src="images/icons/menu-add-fill.svg" alt="" width="35" height="35" />
+              </div>
+              <h3>Engage journalists<br />and newsrooms</h3>
+              <p>
+                We work with journalists to strengthen coverage of coordinated
+                harmful campaigns, providing verified material, expert context,
+                responsible guidance.
+              </p>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <div class="service-card__icon">
+                <img src="images/icons/group-fill.svg" alt="" width="35" height="35" />
+              </div>
+              <h3>Build community capacity</h3>
+              <p>
+                We equip targeted communities through our tip line with toolkits and
+                training to recognize, report, and counter disinformation.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== FACTCHECKS ===================== -->
+      <section class="factchecks" id="factchecks" data-reveal>
+        <div class="shell">
+          <header class="section-intro">
+            <h2 class="heading section-intro__title">Factchecks</h2>
+            <p>
+              We counter misinformation, disinformation, conspiracy theories, and
+              other harmful narratives where they spread—quickly, transparently, and
+              with the evidence to back it up. Our work runs across the full
+              lifecycle of a false claim: catching it early, debunking it, tracking
+              it over time, and helping others recognize it.
+            </p>
+          </header>
+
+          <div class="fact-grid">
+            <a class="fact-card" href="#factchecks">
+              <div class="fact-card__media">
+                <img src="images/factchecks/fc-1.png" alt="" width="452" height="311" />
+              </div>
+              <div class="fact-card__body">
+                <div class="fact-card__meta">
+                  <span class="badge-false">FALSE</span>
+                  <span class="fact-card__topic">Migrants</span>
+                </div>
+                <h3>Deepfake video claims migrants crossed the border</h3>
+                <div class="fact-card__footer">
+                  <time datetime="2026-07-12">12 Jul 2026</time>
+                  <span class="fact-card__arrow" aria-hidden="true"></span>
+                </div>
+              </div>
+            </a>
+
+            <a class="fact-card" href="#factchecks">
+              <div class="fact-card__media">
+                <img src="images/factchecks/fc-2.png" alt="" width="452" height="311" />
+              </div>
+              <div class="fact-card__body">
+                <div class="fact-card__meta">
+                  <span class="badge-false">FALSE</span>
+                  <span class="fact-card__topic">Migrants</span>
+                </div>
+                <h3>Deepfake video claims migrants crossed the border</h3>
+                <div class="fact-card__footer">
+                  <time datetime="2026-07-12">12 Jul 2026</time>
+                  <span class="fact-card__arrow" aria-hidden="true"></span>
+                </div>
+              </div>
+            </a>
+
+            <a class="fact-card" href="#factchecks">
+              <div class="fact-card__media">
+                <img src="images/factchecks/fc-3.png" alt="" width="452" height="311" />
+              </div>
+              <div class="fact-card__body">
+                <div class="fact-card__meta">
+                  <span class="badge-false">FALSE</span>
+                  <span class="fact-card__topic">Migrants</span>
+                </div>
+                <h3>Deepfake video claims migrants crossed the border</h3>
+                <div class="fact-card__footer">
+                  <time datetime="2026-07-12">12 Jul 2026</time>
+                  <span class="fact-card__arrow" aria-hidden="true"></span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="section-cta">
+            <a class="btn btn--filled" href="#factchecks">Read All Factchecks</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== TIP CTA ===================== -->
+      <section class="tip" id="tip" data-reveal>
+        <div class="shell tip__grid">
+          <div class="tip__visual">
+            <div class="tip__mosaic" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+            </div>
+            <img
+              src="images/hero/cta-illustration.png"
+              alt="Hands holding a phone with an orange exclamation mark"
+              width="599"
+              height="489"
+            />
+          </div>
+          <div class="tip__copy">
+            <h2 class="heading tip__title">
+              Seen Something False?<br />
+              Send it to us and we'll DebunkIt!
+            </h2>
+            <p class="tip__lede">
+              Help stop misinformation before it spreads. Send us suspicious posts,
+              videos, images, or messages for verification.
+            </p>
+            <a class="tip__cta" href="mailto:tips@debunkit.org">
+              Report a fake
+              <img
+                src="images/icons/arrow-orange.svg"
+                alt=""
+                width="21"
+                height="10"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== REPORTS ===================== -->
+      <section class="reports" id="reports" data-reveal>
+        <div class="shell">
+          <header class="section-intro">
+            <h2 class="heading section-intro__title">Reports</h2>
+            <p>
+              We counter misinformation, disinformation, conspiracy theories, and
+              other harmful narratives where they spread—quickly, transparently, and
+              with the evidence to back it up. Our work runs across the full
+              lifecycle of a false claim: catching it early, debunking it, tracking
+              it over time, and helping others recognize it.
+            </p>
+          </header>
+
+          <div class="reports__layout">
+            <article class="report-featured">
+              <div class="report-featured__media">
+                <img
+                  src="images/reports/featured.png"
+                  alt=""
+                  width="686"
+                  height="471"
+                />
+              </div>
+              <h3>Deepfake video claims migrants crossed the border</h3>
+              <p>
+                Disinformation rarely arrives just once. The same narratives
+                resurface again and again, rebranded and recycled across platforms
+                and communities. We maintain a living and searchable database of
+                harmful narratives.
+              </p>
+            </article>
+
+            <div class="report-list">
+              <article class="report-list__item">
+                <h3>Deepfake video claims migrants crossed the border</h3>
+                <p>
+                  Disinformation rarely arrives just once. The same narratives
+                  resurface again and again, rebranded and recycled across platforms
+                  and communities. We maintain a living and searchable database of
+                  harmful narratives.
+                </p>
+              </article>
+              <article class="report-list__item">
+                <h3>Deepfake video claims migrants crossed the border</h3>
+                <p>
+                  Disinformation rarely arrives just once. The same narratives
+                  resurface again and again, rebranded and recycled across platforms
+                  and communities. We maintain a living and searchable database of
+                  harmful narratives.
+                </p>
+              </article>
+              <article class="report-list__item">
+                <h3>Deepfake video claims migrants crossed the border</h3>
+                <p>
+                  Disinformation rarely arrives just once. The same narratives
+                  resurface again and again, rebranded and recycled across platforms
+                  and communities. We maintain a living and searchable database of
+                  harmful narratives.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="section-cta">
+            <a class="btn btn--navy" href="#reports">View All Reports</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== NEWSLETTER ===================== -->
+      <section class="newsletter" id="newsletter" aria-labelledby="newsletter-heading" data-reveal>
+        <div class="shell">
+          <div class="newsletter__panel">
+            <div class="newsletter__pattern" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span>
+            </div>
+            <div class="newsletter__copy">
+              <h2 id="newsletter-heading" class="heading newsletter__title">
+                Signup for the newsletter
+              </h2>
+              <p>
+                Receive the latest research, narrative tracking, and disinformation
+                analysis to stay informed and ahead of emerging threats.
+              </p>
+              <form class="newsletter__form" data-newsletter novalidate>
+                <label class="sr-only" for="email">Email address</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="Enter your email"
+                  required
+                />
+                <button class="btn btn--white btn--arrow" type="submit">
+                  Subscribe
+                  <img
+                    src="images/icons/arrow-orange.svg"
+                    alt=""
+                    width="21"
+                    height="10"
+                  />
+                </button>
+              </form>
+              <p class="form-note" data-form-note role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="footer__shell">
+        <div class="footer__intro">
+          <p class="footer__wordmark" aria-hidden="true">debunkit</p>
+
+          <div class="footer__lead">
+            <p class="footer__tagline">
+              Rapid-response fact-checking for communities targeted by
+              misinformation.
+            </p>
+            <a class="footer__email" href="mailto:contact@debunkit.org">
+              contact@debunkit.org
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__grid">
+          <nav class="footer__col" aria-labelledby="footer-socials-heading">
+            <h3 id="footer-socials-heading" class="footer__heading">Socials</h3>
+            <ul>
+              <li>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              </li>
+              <li>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </li>
+              <li>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+              </li>
+              <li>
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer">X</a>
+              </li>
+              <li>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav class="footer__col" aria-labelledby="footer-nav-heading">
+            <h3 id="footer-nav-heading" class="footer__heading">Navigation</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#factchecks">Factchecks</a></li>
+              <li><a href="#reports">Reports</a></li>
+              <li><a href="#tip">Report a Fake</a></li>
+              <li><a href="#newsletter">Newsletter</a></li>
+            </ul>
+          </nav>
+
+          <nav class="footer__col" aria-labelledby="footer-contact-heading">
+            <h3 id="footer-contact-heading" class="footer__heading">Contact</h3>
+            <ul>
+              <li><a href="mailto:contact@debunkit.org">Email</a></li>
+              <li><a href="#donate">Donate</a></li>
+              <li><a href="mailto:media@debunkit.org">Media</a></li>
+              <li><span>Dhaka, Bangladesh</span></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__legal">
+            © <span data-year></span> DebunkIt. All rights reserved.
+          </p>
+          <nav class="footer__legal-links" aria-label="Legal">
+            <a href="#terms">Terms</a>
+            <a href="#privacy">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

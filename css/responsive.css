@@ -1,0 +1,147 @@
+@media (min-width: 720px) {
+  .nav-pill {
+    display: flex;
+  }
+
+  .menu-toggle,
+  .mobile-nav {
+    display: none !important;
+  }
+
+  .header-cta .btn {
+    display: inline-flex;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tip-cta-inner {
+    grid-template-columns: minmax(280px, 599px) 1fr;
+    gap: 0 80px;
+  }
+
+  .tip-visual {
+    min-height: 489px;
+  }
+
+  .tip-visual img {
+    min-height: 489px;
+  }
+
+  .tip-copy {
+    padding: 119px 0 80px;
+  }
+
+  .reports-layout {
+    grid-template-columns: 686fr 620fr;
+    gap: 52px;
+    align-items: start;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .about-grid {
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .fact-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 719px) {
+  :root {
+    --shell: min(1392px, calc(100% - 2rem));
+  }
+
+  .header-inner {
+    grid-template-columns: 1fr auto;
+    min-height: 64px;
+  }
+
+  .header-cta {
+    display: none;
+  }
+
+  .logo img {
+    width: 160px;
+    height: auto;
+  }
+
+  .hero {
+    padding-top: 80px;
+  }
+
+  .social-band {
+    padding: 80px 0;
+  }
+
+  .social-copy .reaction {
+    width: 36px;
+    height: 36px;
+  }
+
+  .social-copy img.reaction {
+    width: 36px;
+    height: 36px;
+  }
+
+  .about,
+  .what,
+  .factchecks,
+  .reports {
+    padding: 72px 0;
+  }
+
+  .service-card {
+    padding-top: 96px;
+  }
+
+  .newsletter-panel {
+    padding: 64px 24px;
+    min-height: 0;
+  }
+
+  .newsletter-pattern {
+    display: none;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px;
+    background: transparent;
+  }
+
+  .newsletter-form input {
+    min-height: 48px;
+    padding: 0 16px;
+    background: var(--orange-deep);
+  }
+}
+
+@media (max-width: 519px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-inline: auto;
+    max-width: 280px;
+  }
+}
