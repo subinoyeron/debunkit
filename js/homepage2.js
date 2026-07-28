@@ -397,32 +397,41 @@
 
   initAboutDemo();
 
+  const newsletter = document.querySelector("[data-newsletter]");
+  if (newsletter) {
+    const note = newsletter.querySelector("[data-form-note]");
+    const emailInput = newsletter.querySelector('input[type="email"]');
+    const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+    newsletter.addEventListener("submit", (event) => {
+      event.preventDefault();
+      note?.classList.remove("is-success", "is-error");
+      emailInput?.classList.remove("is-invalid");
+
+      const email = emailInput?.value.trim() ?? "";
+      if (!isValidEmail(email)) {
+        emailInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Enter a valid email to subscribe.";
+        emailInput?.focus();
+        return;
+      }
+
+      note?.classList.add("is-success");
+      if (note) note.textContent = "You're subscribed. Watch your inbox.";
+      newsletter.reset();
+    });
+  }
+
   const serviceCards = document.querySelectorAll("[data-service-card]");
   serviceCards.forEach((card) => {
-    card.setAttribute("role", "button");
-    card.setAttribute("tabindex", "0");
-    card.setAttribute(
-      "aria-expanded",
-      card.classList.contains("is-open") ? "true" : "false"
-    );
-
-    const toggle = () => {
+    card.addEventListener("click", () => {
       const willOpen = !card.classList.contains("is-open");
       serviceCards.forEach((other) => {
-        other.classList.toggle("is-open", other === card ? willOpen : false);
-        other.setAttribute(
-          "aria-expanded",
-          other === card && willOpen ? "true" : "false"
-        );
+        const open = other === card && willOpen;
+        other.classList.toggle("is-open", open);
+        other.setAttribute("aria-expanded", open ? "true" : "false");
       });
-    };
-
-    card.addEventListener("click", toggle);
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        toggle();
-      }
     });
   });
 })();
