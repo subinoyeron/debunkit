@@ -371,7 +371,7 @@ ul {
 .hero__top {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr minmax(240px, 388px);
+  grid-template-columns: 1fr;
   gap: var(--grid-gap);
   align-items: start;
   padding-top: 0.12em;
@@ -399,57 +399,58 @@ ul {
   -webkit-mask-image: linear-gradient(
     to bottom,
     #000 0%,
-    #000 42%,
-    rgba(0, 0, 0, 0.55) 68%,
+    #000 58%,
+    rgba(0, 0, 0, 0.7) 80%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to bottom,
     #000 0%,
-    #000 42%,
-    rgba(0, 0, 0, 0.55) 68%,
+    #000 58%,
+    rgba(0, 0, 0, 0.7) 80%,
     transparent 100%
   );
 }
 
 .hero__net-link line {
-  stroke: rgba(255, 147, 0, 0.26);
+  stroke: rgba(255, 147, 0, 0.22);
   stroke-width: 1;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
 }
 
 .hero__net-link--cross line {
-  stroke: rgba(220, 241, 255, 0.2);
+  stroke: rgba(220, 241, 255, 0.14);
+  stroke-width: 1;
   stroke-dasharray: 5 5;
 }
 
 .hero__net-node {
   position: absolute;
-  width: 6px;
-  height: 6px;
-  margin: -3px 0 0 -3px;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
   border-radius: 50%;
   background: var(--orange);
-  opacity: 0.45;
+  opacity: 0.32;
 }
 
 .hero__net-node--hub {
-  width: 9px;
-  height: 9px;
-  margin: -4.5px 0 0 -4.5px;
-  opacity: 0.6;
-  box-shadow: 0 0 0 5px rgba(255, 147, 0, 0.1);
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  opacity: 0.45;
+  box-shadow: 0 0 0 4px rgba(255, 147, 0, 0.07);
   animation: hero-net-pulse 4.5s var(--ease) infinite;
 }
 
 @keyframes hero-net-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 5px rgba(255, 147, 0, 0.1);
+    box-shadow: 0 0 0 4px rgba(255, 147, 0, 0.07);
   }
   50% {
-    box-shadow: 0 0 0 10px rgba(255, 147, 0, 0);
+    box-shadow: 0 0 0 9px rgba(255, 147, 0, 0);
   }
 }
 
@@ -492,7 +493,12 @@ ul {
 .hero__doc--15 { left: 60%; top: 40%; opacity: 0.29; }
 .hero__doc--16 { left: 72%; top: 54%; opacity: 0.23; }
 .hero__doc--17 { left: 86%; top: 42%; opacity: 0.28; }
-.hero__doc--18 { left: 2%; top: 22%; width: clamp(56px, 6vw, 78px); opacity: 0.22; }
+.hero__doc--18 { left: 2%; top: 22%; opacity: 0.22; }
+
+/* Vertical short-form cards (reels / short video posts) */
+.hero__doc--tall {
+  width: clamp(46px, 5vw, 62px);
+}
 
 .hero__title,
 .hero__lede {
@@ -585,6 +591,21 @@ ul {
   min-height: 28px;
 }
 
+/* Both chips share one fixed height — no stretch/auto height tricks */
+.fc-card__tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  height: 28px;
+}
+
+.fc-card__tags .badge {
+  height: 28px;
+  min-height: 28px;
+  max-height: 28px;
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -609,6 +630,11 @@ ul {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
+}
+
+.badge--platform {
+  background: #234556;
+  color: var(--pale);
 }
 
 .fc-card__time {
@@ -652,10 +678,10 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: clamp(520px, 78vh, 820px);
-  min-height: clamp(520px, 78svh, 820px);
+  min-height: clamp(400px, 59vh, 640px);
+  min-height: clamp(400px, 59svh, 640px);
   background: var(--navy);
-  padding: clamp(3.5rem, 6.5vw, 5rem) 0;
+  padding: clamp(2.5rem, 4.5vw, 3.5rem) 0 clamp(4.25rem, 7vw, 5.75rem);
 }
 
 /* Grid + dots — same pattern as main site social band, tuned for navy */
@@ -739,7 +765,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 87px;
+  gap: 48px;
 }
 
 .social-first__illustration {
@@ -1495,13 +1521,13 @@ ul {
 
 .btn--reports {
   flex-shrink: 0;
-  background: var(--navy);
-  color: var(--orange);
+  background: var(--orange);
+  color: var(--navy);
   border-color: transparent;
 }
 
 .btn--reports:hover {
-  background: var(--orange);
+  background: var(--white);
   color: var(--navy);
   border-color: transparent;
 }
@@ -2030,9 +2056,9 @@ ul {
 
   .social-first {
     --social-grid-size: 72px;
-    min-height: 100vh;
-    min-height: 100svh;
-    padding: clamp(3rem, 8vw, 4.5rem) 0;
+    min-height: 70vh;
+    min-height: 70svh;
+    padding: clamp(2.25rem, 6vw, 3.25rem) 0 clamp(3.5rem, 9vw, 4.75rem);
   }
 
   .social-first__illustration {
@@ -2041,7 +2067,7 @@ ul {
   }
 
   .social-first__inner {
-    gap: 56px;
+    gap: 36px;
   }
 
   .social-first__copy {
