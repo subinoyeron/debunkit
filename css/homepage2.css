@@ -1527,8 +1527,8 @@ ul {
 }
 
 .btn--reports:hover {
-  background: var(--white);
-  color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
   border-color: transparent;
 }
 
