@@ -126,9 +126,31 @@
 
     <main id="main" class="search-main">
       <div class="shell">
-        <h1 class="search-heading" data-search-heading>
-          Search Results for: <span data-search-query></span>
-        </h1>
+        <header class="search-header">
+          <h1 class="search-heading" data-search-heading>
+            Search Results for: <span data-search-query></span>
+          </h1>
+          <form class="search-bar" data-page-search role="search" action="index.html" method="get">
+            <label class="sr-only" for="page-search-input">Search</label>
+            <input
+              id="page-search-input"
+              class="search-bar__input"
+              type="search"
+              name="q"
+              placeholder="Search..."
+              autocomplete="off"
+            />
+            <button class="search-bar__btn" type="submit" aria-label="Search">
+              <img
+                src="../jinishpotro/searchicons.svg"
+                alt=""
+                width="18"
+                height="18"
+              />
+              <span>Search</span>
+            </button>
+          </form>
+        </header>
 
         <div class="search-results" data-search-results>
           <section class="search-section" data-search-section="factchecks" hidden>
@@ -1365,6 +1387,10 @@
             </div>
           </section>
         </div>
+
+        <p class="search-empty" data-search-empty hidden>
+          No results found. Try searching for something else.
+        </p>
       </div>
     </main>
 
@@ -1387,9 +1413,7 @@
               <ul>
                 <li><a href="../about/index.html">About</a></li>
                 <li><a href="../factchecks/index.html">Factchecks</a></li>
-                <li><a href="../reports/index.html">Reports</a></li>
-                <li><a href="../about/index.html#mission">Our Mission</a></li>
-              </ul>
+                <li><a href="../reports/index.html">Reports</a></li>              </ul>
             </nav>
 
             <nav class="footer__col" aria-labelledby="footer-involve-heading">

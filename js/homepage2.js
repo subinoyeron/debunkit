@@ -84,19 +84,32 @@
 
   const footer = document.querySelector(".site-footer");
   if (header && footer && "IntersectionObserver" in window) {
+    const updateFooterHide = (isIntersecting) => {
+      // Keep the nav visible on short pages (e.g. empty search) where the
+      // footer is already in view without scrolling.
+      const hide = Boolean(isIntersecting) && window.scrollY > 48;
+      header.classList.toggle("is-footer-hidden", hide);
+      if (hide && menuToggle && mobileNav) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open menu");
+        mobileNav.hidden = true;
+      }
+    };
+
+    let footerInView = false;
     const footerObserver = new IntersectionObserver(
       ([entry]) => {
-        const hide = entry.isIntersecting;
-        header.classList.toggle("is-footer-hidden", hide);
-        if (hide && menuToggle && mobileNav) {
-          menuToggle.setAttribute("aria-expanded", "false");
-          menuToggle.setAttribute("aria-label", "Open menu");
-          mobileNav.hidden = true;
-        }
+        footerInView = entry.isIntersecting;
+        updateFooterHide(footerInView);
       },
       { threshold: 0.08, rootMargin: "0px 0px -12% 0px" }
     );
     footerObserver.observe(footer);
+    window.addEventListener(
+      "scroll",
+      () => updateFooterHide(footerInView),
+      { passive: true }
+    );
   }
 
   if (menuToggle && mobileNav) {
@@ -654,6 +667,7 @@
   const searchResults = document.querySelector("[data-search-results]");
   if (searchResults) {
     const queryEl = document.querySelector("[data-search-query]");
+    const emptyEl = document.querySelector("[data-search-empty]");
     const items = [...searchResults.querySelectorAll("[data-search-item]")];
     const sections = [...searchResults.querySelectorAll("[data-search-section]")];
     const query = (new URLSearchParams(location.search).get("q") ?? "").trim();
@@ -664,6 +678,10 @@
     const headerInput = document.querySelector("#header-search-input");
     if (headerInput && query) headerInput.value = query;
 
+    const pageSearchInput = document.querySelector("#page-search-input");
+    if (pageSearchInput) pageSearchInput.value = query;
+
+    let visibleCount = 0;
     items.forEach((item) => {
       const title =
         (
@@ -674,6 +692,7 @@
           .toLowerCase();
       const match = Boolean(queryLower) && title.includes(queryLower);
       item.classList.toggle("is-hidden", !match);
+      if (match) visibleCount += 1;
     });
 
     sections.forEach((section) => {
@@ -682,6 +701,10 @@
       );
       section.hidden = !hasVisible;
     });
+
+    if (emptyEl) {
+      emptyEl.hidden = visibleCount > 0;
+    }
   }
 
   const serviceCards = document.querySelectorAll("[data-service-card]");
