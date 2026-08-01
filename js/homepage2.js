@@ -10,6 +10,59 @@
     el.textContent = String(new Date().getFullYear());
   });
 
+  if (location.hash === "#search") {
+    const searchInput = document.querySelector("#fc-search-input");
+    searchInput?.focus({ preventScroll: false });
+  }
+
+  const headerSearch = document.querySelector("[data-header-search]");
+  if (headerSearch) {
+    const toggle = headerSearch.querySelector("[data-header-search-toggle]");
+    const overlay = headerSearch.querySelector("[data-header-search-overlay]");
+    const input = headerSearch.querySelector(".header-search__input");
+    const searchIcon = headerSearch.querySelector(
+      '[data-header-search-icon="search"]'
+    );
+    const closeIcon = headerSearch.querySelector(
+      '[data-header-search-icon="close"]'
+    );
+
+    const setOpen = (isOpen) => {
+      headerSearch.classList.toggle("is-open", isOpen);
+      if (overlay) overlay.hidden = !isOpen;
+      toggle?.setAttribute("aria-expanded", String(isOpen));
+      toggle?.setAttribute("aria-label", isOpen ? "Close search" : "Open search");
+      if (searchIcon) searchIcon.hidden = isOpen;
+      if (closeIcon) closeIcon.hidden = !isOpen;
+      if (isOpen) {
+        input?.focus();
+      } else if (input) {
+        input.value = "";
+        input.blur();
+      }
+    };
+
+    toggle?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setOpen(!headerSearch.classList.contains("is-open"));
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && headerSearch.classList.contains("is-open")) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        headerSearch.classList.contains("is-open") &&
+        !headerSearch.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    });
+  }
+
   if (logoImage && logoFallback) {
     logoImage.addEventListener("error", () => {
       logoImage.hidden = true;
@@ -458,6 +511,179 @@
     });
   }
 
+  const contactForm = document.querySelector("[data-contact-form]");
+  if (contactForm) {
+    const note = contactForm.querySelector("[data-form-note]");
+    const nameInput = contactForm.querySelector("#contact-name");
+    const emailInput = contactForm.querySelector("#contact-email");
+    const subjectInput = contactForm.querySelector("#contact-subject");
+    const messageInput = contactForm.querySelector("#contact-message");
+    const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      note?.classList.remove("is-success", "is-error");
+      [nameInput, emailInput, subjectInput, messageInput].forEach((el) =>
+        el?.classList.remove("is-invalid")
+      );
+
+      const name = nameInput?.value.trim() ?? "";
+      const email = emailInput?.value.trim() ?? "";
+      const subject = subjectInput?.value.trim() ?? "";
+      const message = messageInput?.value.trim() ?? "";
+
+      if (!name) {
+        nameInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Please enter your name.";
+        nameInput?.focus();
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        emailInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Enter a valid email address.";
+        emailInput?.focus();
+        return;
+      }
+
+      if (!subject) {
+        subjectInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Please add a subject.";
+        subjectInput?.focus();
+        return;
+      }
+
+      if (!message) {
+        messageInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Please write a short message.";
+        messageInput?.focus();
+        return;
+      }
+
+      note?.classList.add("is-success");
+      if (note) note.textContent = "Thanks — we'll get back to you soon.";
+      contactForm.reset();
+    });
+  }
+
+  const claimForm = document.querySelector("[data-claim-form]");
+  if (claimForm) {
+    const note = claimForm.querySelector("[data-form-note]");
+    const platformInput = claimForm.querySelector("#claim-platform");
+    const linkInput = claimForm.querySelector("#claim-link");
+    const claimInput = claimForm.querySelector("#claim-text");
+    const targetInput = claimForm.querySelector("#claim-target");
+    const emailInput = claimForm.querySelector("#claim-email");
+    const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    const isValidUrl = (value) => {
+      try {
+        const url = new URL(value);
+        return url.protocol === "http:" || url.protocol === "https:";
+      } catch {
+        return false;
+      }
+    };
+
+    claimForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      note?.classList.remove("is-success", "is-error");
+      [platformInput, linkInput, claimInput, targetInput, emailInput].forEach(
+        (el) => el?.classList.remove("is-invalid")
+      );
+
+      const platform = platformInput?.value.trim() ?? "";
+      const link = linkInput?.value.trim() ?? "";
+      const claim = claimInput?.value.trim() ?? "";
+      const target = targetInput?.value.trim() ?? "";
+      const email = emailInput?.value.trim() ?? "";
+
+      if (!platform) {
+        platformInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Please enter the platform name.";
+        platformInput?.focus();
+        return;
+      }
+
+      if (!isValidUrl(link)) {
+        linkInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Paste a valid URL (including https://).";
+        linkInput?.focus();
+        return;
+      }
+
+      if (!claim) {
+        claimInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Please describe what the claim says.";
+        claimInput?.focus();
+        return;
+      }
+
+      if (!target) {
+        targetInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Please say who this targets.";
+        targetInput?.focus();
+        return;
+      }
+
+      if (email && !isValidEmail(email)) {
+        emailInput?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Enter a valid email, or leave it blank.";
+        emailInput?.focus();
+        return;
+      }
+
+      note?.classList.add("is-success");
+      if (note) {
+        note.textContent = email
+          ? "Thanks — we received your claim and may follow up by email."
+          : "Thanks — we received your claim.";
+      }
+      claimForm.reset();
+    });
+  }
+
+  const searchResults = document.querySelector("[data-search-results]");
+  if (searchResults) {
+    const queryEl = document.querySelector("[data-search-query]");
+    const items = [...searchResults.querySelectorAll("[data-search-item]")];
+    const sections = [...searchResults.querySelectorAll("[data-search-section]")];
+    const query = (new URLSearchParams(location.search).get("q") ?? "").trim();
+    const queryLower = query.toLowerCase();
+
+    if (queryEl) queryEl.textContent = query;
+
+    const headerInput = document.querySelector("#header-search-input");
+    if (headerInput && query) headerInput.value = query;
+
+    items.forEach((item) => {
+      const title =
+        (
+          item.querySelector(".fc-card__title, .report-card__title")?.textContent ??
+          ""
+        )
+          .trim()
+          .toLowerCase();
+      const match = Boolean(queryLower) && title.includes(queryLower);
+      item.classList.toggle("is-hidden", !match);
+    });
+
+    sections.forEach((section) => {
+      const hasVisible = [...section.querySelectorAll("[data-search-item]")].some(
+        (item) => !item.classList.contains("is-hidden")
+      );
+      section.hidden = !hasVisible;
+    });
+  }
+
   const serviceCards = document.querySelectorAll("[data-service-card]");
   serviceCards.forEach((card) => {
     card.addEventListener("click", () => {
@@ -468,5 +694,157 @@
         other.setAttribute("aria-expanded", open ? "true" : "false");
       });
     });
+  });
+
+  const initContentHub = ({
+    filtersSel,
+    gridSel,
+    emptySel,
+    searchSel,
+    paginationSel,
+    titleSel,
+    pageBtnClass,
+    pageSize = 16,
+  }) => {
+    const filters = document.querySelector(filtersSel);
+    const grid = document.querySelector(gridSel);
+    if (!filters || !grid) return;
+
+    const filterButtons = [...filters.querySelectorAll("[data-filter]")];
+    const cards = [...grid.querySelectorAll("[data-category]")];
+    const empty = document.querySelector(emptySel);
+    const searchForm = document.querySelector(searchSel);
+    const searchInput = searchForm?.querySelector('input[type="search"]');
+    const pagination = document.querySelector(paginationSel);
+    const pageNumbers = pagination?.querySelector("[data-page-numbers]");
+    const prevBtn = pagination?.querySelector("[data-page-prev]");
+    const nextBtn = pagination?.querySelector("[data-page-next]");
+    let activeFilter = "all";
+    let query = "";
+    let currentPage = 1;
+
+    const matchingCards = () =>
+      cards.filter((card) => {
+        const categoryMatch =
+          activeFilter === "all" || card.dataset.category === activeFilter;
+        const title =
+          card.querySelector(titleSel)?.textContent.toLowerCase() ?? "";
+        const searchMatch = !query || title.includes(query);
+        return categoryMatch && searchMatch;
+      });
+
+    const render = () => {
+      const matched = matchingCards();
+      const totalPages = Math.max(1, Math.ceil(matched.length / pageSize));
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const start = (currentPage - 1) * pageSize;
+      const end = start + pageSize;
+      const pageSet = new Set(matched.slice(start, end));
+
+      cards.forEach((card) => {
+        card.classList.toggle("is-hidden", !pageSet.has(card));
+      });
+
+      empty?.classList.toggle("is-visible", matched.length === 0);
+
+      if (pagination && pageNumbers) {
+        const showPager = matched.length > pageSize;
+        pagination.hidden = !showPager || matched.length === 0;
+        pageNumbers.innerHTML = "";
+        for (let page = 1; page <= totalPages; page += 1) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = pageBtnClass;
+          btn.dataset.page = String(page);
+          btn.textContent = String(page);
+          btn.setAttribute("aria-label", `Page ${page}`);
+          if (page === currentPage) {
+            btn.classList.add("is-active");
+            btn.setAttribute("aria-current", "page");
+          }
+          pageNumbers.appendChild(btn);
+        }
+        if (prevBtn) prevBtn.disabled = currentPage <= 1;
+        if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+      }
+
+      filterButtons.forEach((btn) => {
+        const active = btn.dataset.filter === activeFilter;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+    };
+
+    filters.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-filter]");
+      if (!btn || !filters.contains(btn)) return;
+      activeFilter = btn.dataset.filter;
+      currentPage = 1;
+      render();
+    });
+
+    searchForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      query = (searchInput?.value ?? "").trim().toLowerCase();
+      currentPage = 1;
+      render();
+    });
+
+    searchInput?.addEventListener("input", () => {
+      if ((searchInput.value ?? "").trim() === "" && query) {
+        query = "";
+        currentPage = 1;
+        render();
+      }
+    });
+
+    pagination?.addEventListener("click", (event) => {
+      const target = event.target.closest("button");
+      if (!target || !pagination.contains(target)) return;
+
+      const matched = matchingCards();
+      const totalPages = Math.max(1, Math.ceil(matched.length / pageSize));
+
+      if (target.matches("[data-page-prev]")) {
+        currentPage = Math.max(1, currentPage - 1);
+      } else if (target.matches("[data-page-next]")) {
+        currentPage = Math.min(totalPages, currentPage + 1);
+      } else if (target.dataset.page) {
+        currentPage = Number(target.dataset.page) || 1;
+      } else {
+        return;
+      }
+      render();
+      grid.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    const urlQuery = new URLSearchParams(location.search).get("q");
+    if (urlQuery && searchInput) {
+      searchInput.value = urlQuery;
+      query = urlQuery.trim().toLowerCase();
+    }
+
+    render();
+  };
+
+  initContentHub({
+    filtersSel: "[data-factcheck-filters]",
+    gridSel: "[data-factcheck-grid]",
+    emptySel: "[data-factcheck-empty]",
+    searchSel: "[data-factcheck-search]",
+    paginationSel: "[data-factcheck-pagination]",
+    titleSel: ".fc-card__title",
+    pageBtnClass: "fc-pagination__btn",
+  });
+
+  initContentHub({
+    filtersSel: "[data-report-filters]",
+    gridSel: "[data-report-grid]",
+    emptySel: "[data-report-empty]",
+    searchSel: "[data-report-search]",
+    paginationSel: "[data-report-pagination]",
+    titleSel: ".report-card__title",
+    pageBtnClass: "rp-pagination__btn",
   });
 })();

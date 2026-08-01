@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reports — DebunkIt</title>
+    <meta
+      name="description"
+      content="Browse DebunkIt reports by community: South Asians, immigrants, Muslims, and refugees."
+    />
+    <link rel="canonical" href="/reports/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/homepage2.css" />
+    <link rel="stylesheet" href="../css/reports.css" />
+  </head>
+  <body class="reports-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <div class="header__inner">
+        <a class="logo" href="../homepage2.html" aria-label="DebunkIt home">
+          <img
+            src="../images/logo/logo.svg"
+            alt="DebunkIt"
+            width="148"
+            height="24"
+            data-logo-image
+          />
+          <span class="logo__fallback" data-logo-fallback hidden>
+            Debunk<span>It</span>
+          </span>
+        </a>
+
+        <nav class="header__nav" aria-label="Primary">
+          <a href="../homepage2.html">Home</a>
+          <a href="../about/index.html">About</a>
+          <a href="../factchecks/index.html">Factcheck</a>
+          <a href="../reports/index.html" aria-current="page">Report</a>
+          <a href="../contact/index.html">Contact</a>
+        </nav>
+
+        <div class="header__actions">
+          <div class="header-search" data-header-search>
+            <button
+              class="header-search__toggle"
+              type="button"
+              data-header-search-toggle
+              aria-expanded="false"
+              aria-controls="header-search-panel"
+              aria-label="Open search"
+            >
+              <img
+                class="header-search__icon header-search__icon--search"
+                src="../jinishpotro/searchicons.svg"
+                alt=""
+                width="18"
+                height="18"
+                data-header-search-icon="search"
+              />
+              <img
+                class="header-search__icon header-search__icon--close"
+                src="../jinishpotro/closeicon.svg"
+                alt=""
+                width="18"
+                height="18"
+                data-header-search-icon="close"
+                hidden
+              />
+            </button>
+            <div class="header-search__overlay" data-header-search-overlay hidden>
+              <div class="header-search__shell">
+                <div
+                  id="header-search-panel"
+                  class="header-search__panel"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="Search"
+                >
+                  <form class="header-search__form" role="search" action="../search/index.html" method="get">
+                    <label class="sr-only" for="header-search-input">Search</label>
+                    <input
+                      id="header-search-input"
+                      class="header-search__input"
+                      type="search"
+                      name="q"
+                      placeholder="Search..."
+                      autocomplete="off"
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn--header-cta" href="../submit/index.html">Submit a claim</a>
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label="Open menu"
+          >
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Mobile" hidden>
+        <a href="../homepage2.html">Home</a>
+        <a href="../about/index.html">About</a>
+        <a href="../factchecks/index.html">Factcheck</a>
+        <a href="../reports/index.html" aria-current="page">Report</a>
+        <a href="../contact/index.html">Contact</a>
+        <a href="../search/index.html">Search</a>
+        <a class="btn btn--header-cta mobile-nav__cta" href="../submit/index.html">Submit a claim</a>
+      </nav>
+    </header>
+
+    <main id="main" class="rp-hub">
+      <div class="shell">
+        <header class="rp-hub__header">
+          <h1 class="rp-hub__title">Reports</h1>
+          <div class="rp-hub__toolbar">
+            <div class="rp-filters" role="group" aria-label="Filter by community" data-report-filters>
+              <button class="rp-filters__btn is-active" type="button" data-filter="all" aria-pressed="true">
+                All
+              </button>
+              <button class="rp-filters__btn" type="button" data-filter="south-asians" aria-pressed="false">
+                South Asians
+              </button>
+              <button class="rp-filters__btn" type="button" data-filter="immigrants" aria-pressed="false">
+                Immigrants
+              </button>
+              <button class="rp-filters__btn" type="button" data-filter="muslims" aria-pressed="false">
+                Muslims
+              </button>
+              <button class="rp-filters__btn" type="button" data-filter="refugees" aria-pressed="false">
+                Refugees
+              </button>
+            </div>
+
+            <form class="rp-search" data-report-search role="search">
+              <label class="sr-only" for="rp-search-input">Search reports</label>
+              <input
+                id="rp-search-input"
+                class="rp-search__input"
+                type="search"
+                name="q"
+                placeholder="Search reports"
+                autocomplete="off"
+              />
+              <button class="rp-search__btn" type="submit" aria-label="Search">
+                <img
+                  src="../jinishpotro/searchicons.svg"
+                  alt=""
+                  width="18"
+                  height="18"
+                />
+                <span>Search</span>
+              </button>
+            </form>
+          </div>
+        </header>
+
+        <div class="rp-hub__grid" data-report-grid>
+          <article class="report-card" data-category="immigrants">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-1.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Immigrants</span>
+              <h2 class="report-card__title">Deepfake video claims migrants crossed the border</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-07-23">Jul 23, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="muslims">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-2.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Muslims</span>
+              <h2 class="report-card__title">Deepfake speech attributed to Muslim Leader</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-07-22">Jul 22, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="south-asians">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-3.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">South Asians</span>
+              <h2 class="report-card__title">Claim about absentee voting lacks context</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-07-16">Jul 16, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="refugees">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-4.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Refugees</span>
+              <h2 class="report-card__title">Photo falsely claims refugees occupied a hotel</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-07-08">Jul 8, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="immigrants">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-2.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Immigrants</span>
+              <h2 class="report-card__title">Border crossing numbers misrepresented in viral post</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-07-06">Jul 6, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="muslims">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-1.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Muslims</span>
+              <h2 class="report-card__title">Mosque funding conspiracy recycled as breaking news</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-07-04">Jul 4, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="south-asians">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-4.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">South Asians</span>
+              <h2 class="report-card__title">Fake screenshot targets South Asian community leaders</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-07-02">Jul 2, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="refugees">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-3.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Refugees</span>
+              <h2 class="report-card__title">Hotel housing claim about refugees lacks context</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-30">Jun 30, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="immigrants">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-3.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Immigrants</span>
+              <h2 class="report-card__title">Old video recirculated as a new migrant crisis</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-28">Jun 28, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="muslims">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-4.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Muslims</span>
+              <h2 class="report-card__title">Clip mislabels peaceful protest as extremist rally</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-26">Jun 26, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="south-asians">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-1.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">South Asians</span>
+              <h2 class="report-card__title">Viral claim about South Asian students is fabricated</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-24">Jun 24, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="refugees">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-2.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Refugees</span>
+              <h2 class="report-card__title">Edited clip falsely shows refugees refusing aid</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-22">Jun 22, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="immigrants">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-4.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Immigrants</span>
+              <h2 class="report-card__title">Out-of-context chart inflates deportation figures</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-20">Jun 20, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="muslims">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-3.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Muslims</span>
+              <h2 class="report-card__title">Altered flyer claims ban on Muslim celebrations</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-18">Jun 18, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="south-asians">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-2.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">South Asians</span>
+              <h2 class="report-card__title">Health scare post misattributes illness to community clinics</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-16">Jun 16, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="refugees">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-1.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Refugees</span>
+              <h2 class="report-card__title">Audio clip misquotes resettlement agency official</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-14">Jun 14, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="immigrants">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-1.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Immigrants</span>
+              <h2 class="report-card__title">Meme claims migrants receive new cars from the state</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-12">Jun 12, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="muslims">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-2.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Muslims</span>
+              <h2 class="report-card__title">Stitched footage invents mosque confrontation</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-10">Jun 10, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="south-asians">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-3.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">South Asians</span>
+              <h2 class="report-card__title">Job posting hoax targets South Asian job seekers</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-08">Jun 8, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="refugees">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-4.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Refugees</span>
+              <h2 class="report-card__title">City budget graphic misstates refugee housing costs</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-06">Jun 6, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="immigrants">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-2.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Immigrants</span>
+              <h2 class="report-card__title">Workplace raid footage dated years earlier</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-04">Jun 4, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="muslims">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-4.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Muslims</span>
+              <h2 class="report-card__title">Quote card invents remarks by a Muslim council member</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-06-02">Jun 2, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="south-asians">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-1.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">South Asians</span>
+              <h2 class="report-card__title">School curriculum claim lacks primary-source context</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-05-30">May 30, 2026</time>
+              </p>
+            </a>
+          </article>
+
+          <article class="report-card" data-category="refugees">
+            <a class="report-card__link" href="#">
+              <div class="report-card__media">
+                <img
+                  src="../images/homepage2/fc-3.png"
+                  alt=""
+                  width="333"
+                  height="258"
+                  loading="lazy"
+                />
+              </div>
+              <span class="report-card__badge">Refugees</span>
+              <h2 class="report-card__title">Composite image falsely places refugees at crime scene</h2>
+              <p class="report-card__meta">
+                <time datetime="2026-05-28">May 28, 2026</time>
+              </p>
+            </a>
+          </article>
+        </div>
+
+        <p class="rp-hub__empty" data-report-empty role="status" aria-live="polite">
+          No reports match your filters.
+        </p>
+
+        <nav class="rp-pagination" data-report-pagination aria-label="Report pages" hidden>
+          <button class="rp-pagination__btn" type="button" data-page-prev aria-label="Previous page">
+            Previous
+          </button>
+          <div class="rp-pagination__pages" data-page-numbers></div>
+          <button class="rp-pagination__btn" type="button" data-page-next aria-label="Next page">
+            Next
+          </button>
+        </nav>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer__shell">
+        <div class="footer__main">
+          <div class="footer__brand-block">
+            <a class="footer__brand" href="../homepage2.html" aria-label="DebunkIt home">
+              <img src="../images/logo/logo.svg" alt="" width="140" height="32" />
+            </a>
+            <p class="footer__tagline">
+              Rapid-response fact-checking for communities targeted by
+              misinformation online.
+            </p>
+          </div>
+
+          <div class="footer__links">
+            <nav class="footer__col" aria-labelledby="footer-explore-heading">
+              <h3 id="footer-explore-heading" class="footer__heading">Explore</h3>
+              <ul>
+                <li><a href="../about/index.html">About</a></li>
+                <li><a href="../factchecks/index.html">Factchecks</a></li>
+                <li><a href="../reports/index.html">Reports</a></li>
+                <li><a href="../about/index.html#mission">Our Mission</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer__col" aria-labelledby="footer-involve-heading">
+              <h3 id="footer-involve-heading" class="footer__heading">Get Involved</h3>
+              <ul>
+                <li><a href="../submit/index.html">Submit a Claim</a></li>
+                <li><a href="../homepage2.html#newsletter">Newsletter</a></li>
+                <li><a href="#donate">Donate</a></li>
+              </ul>
+            </nav>
+
+            <nav class="footer__col footer__col--socials" aria-labelledby="footer-socials-heading">
+              <h3 id="footer-socials-heading" class="footer__heading">Socials</h3>
+              <ul class="footer__socials">
+                <li>
+                  <a
+                    class="footer__social-link"
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <img src="../socialsicons/linkedinicon.svg" alt="" width="18" height="18" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="footer__social-link"
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                  >
+                    <img src="../socialsicons/instagramicon.svg" alt="" width="18" height="18" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="footer__social-link"
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                  >
+                    <img src="../socialsicons/fbicon.svg" alt="" width="18" height="18" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="footer__social-link"
+                    href="https://x.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X"
+                  >
+                    <img src="../socialsicons/xicon.svg" alt="" width="18" height="18" />
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__legal">
+            © <span data-year></span> DebunkIt. All rights reserved.
+          </p>
+          <nav class="footer__legal-links" aria-label="Legal">
+            <a href="#terms">Terms</a>
+            <a href="#privacy">Privacy Policy</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/homepage2.js" defer></script>
+  </body>
+</html>
