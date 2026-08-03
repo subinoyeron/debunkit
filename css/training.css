@@ -1,0 +1,562 @@
+/* Training request page — matches contact/submit design system */
+
+.training-page {
+  background: var(--navy);
+}
+
+.training-page .site-header {
+  background: transparent;
+  box-shadow: none;
+}
+
+.training-page .logo img {
+  filter: brightness(0) invert(1);
+}
+
+.training-page .logo__fallback {
+  color: var(--white);
+}
+
+.training-page .logo__fallback span {
+  color: var(--orange);
+}
+
+.training-page .menu-toggle span {
+  background: var(--white);
+}
+
+.training-page .site-header.is-scrolled {
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(0, 29, 43, 0.08);
+}
+
+.training-page .site-header.is-scrolled .logo img {
+  filter: none;
+}
+
+.training-page .site-header.is-scrolled .menu-toggle span {
+  background: var(--navy);
+}
+
+.training-main {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(6.5rem, 12vw, 8.5rem) 0 clamp(4rem, 8vw, 5.5rem);
+}
+
+.training-main > .shell {
+  position: relative;
+  z-index: 1;
+}
+
+.training-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+/* ---------- Hero (left column) ---------- */
+
+.training-hero {
+  margin: 0;
+  text-align: left;
+}
+
+.training-hero__title {
+  margin: 0 0 1.15rem;
+  max-width: none;
+  font-size: clamp(1.65rem, 3.4vw, 48px);
+  font-weight: 600;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.training-hero__lead {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  text-wrap: pretty;
+}
+
+.training-intro {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 36rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.training-intro__title {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.15;
+  color: var(--orange);
+}
+
+.training-intro__copy {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(0, 29, 43, 0.78);
+  text-wrap: pretty;
+}
+
+.training-step-intro[hidden] {
+  display: none !important;
+}
+
+/* ---------- Form panel (right column) ---------- */
+
+.training-panel {
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: var(--white);
+  border-radius: 10px;
+}
+
+.training-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  min-width: 0;
+}
+
+.training-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.training-progress__label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: rgba(0, 29, 43, 0.5);
+}
+
+.training-progress__track {
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(0, 29, 43, 0.1);
+  overflow: hidden;
+}
+
+.training-progress__fill {
+  display: block;
+  height: 100%;
+  width: 33.333%;
+  border-radius: inherit;
+  background: var(--orange);
+  transition: width 0.35s var(--ease);
+}
+
+.training-step-intro__title {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+.training-step-intro__copy {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 29, 43, 0.58);
+}
+
+.training-step {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  min-width: 0;
+}
+
+.training-step[hidden] {
+  display: none !important;
+}
+
+.training-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.training-step .training-section + .training-section {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 29, 43, 0.08);
+}
+
+.training-section__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+.training-section__hint {
+  margin: -0.25rem 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(0, 29, 43, 0.55);
+}
+
+.training-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem 1rem;
+}
+
+.training-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.training-field--full {
+  grid-column: 1 / -1;
+}
+
+.training-field label,
+.training-field .training-label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--navy);
+}
+
+.training-field__optional {
+  font-weight: 400;
+  color: rgba(0, 29, 43, 0.5);
+}
+
+.training-field__req {
+  color: var(--orange);
+}
+
+.training-field input,
+.training-field select,
+.training-field textarea {
+  width: 100%;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #eef1f4;
+  color: var(--navy);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4;
+  transition:
+    border-color var(--duration) var(--ease),
+    background var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+.training-field input,
+.training-field select {
+  height: 52px;
+  padding: 0 1rem;
+}
+
+.training-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' stroke='%23001d2b' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-color: #eef1f4;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.training-field textarea {
+  min-height: 112px;
+  height: 112px;
+  padding: 0.95rem 1rem;
+  resize: vertical;
+}
+
+.training-field textarea.training-field__textarea--lg {
+  min-height: 140px;
+  height: 140px;
+}
+
+.training-field input::placeholder,
+.training-field textarea::placeholder {
+  color: rgba(0, 29, 43, 0.42);
+}
+
+.training-field input:hover,
+.training-field textarea:hover {
+  background: #e8ecf0;
+}
+
+.training-field select:hover {
+  background-color: #e8ecf0;
+}
+
+.training-field input:focus,
+.training-field select:focus,
+.training-field textarea:focus {
+  outline: none;
+  border-color: var(--navy);
+  background-color: var(--white);
+  box-shadow: 0 0 0 3px rgba(0, 29, 43, 0.08);
+}
+
+.training-field input.is-invalid,
+.training-field select.is-invalid,
+.training-field textarea.is-invalid {
+  border-color: var(--fake);
+  background: #fff6f6;
+}
+
+.training-field__error {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--fake);
+}
+
+.training-field__error:empty {
+  display: none;
+}
+
+/* ---------- Radio cards ---------- */
+
+.training-radios {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.training-radios--budget {
+  grid-template-columns: 1fr;
+}
+
+.training-radio {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+.training-radio input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  pointer-events: none;
+}
+
+.training-radio__card {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  min-height: 52px;
+  padding: 0.75rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #eef1f4;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+  transition:
+    border-color var(--duration) var(--ease),
+    background var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+.training-radio__card::before {
+  content: "";
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid rgba(0, 29, 43, 0.28);
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: inset 0 0 0 0 var(--orange);
+  transition:
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+.training-radio:hover .training-radio__card {
+  background: #e8ecf0;
+}
+
+.training-radio input:focus-visible + .training-radio__card {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.training-radio input:checked + .training-radio__card {
+  border-color: var(--navy);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(0, 29, 43, 0.08);
+}
+
+.training-radio input:checked + .training-radio__card::before {
+  border-color: var(--orange);
+  box-shadow: inset 0 0 0 4px var(--orange);
+}
+
+.training-radios.is-invalid .training-radio__card {
+  border-color: rgba(249, 57, 63, 0.45);
+  background: #fff6f6;
+}
+
+/* ---------- Submit / step nav ---------- */
+
+.training-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  padding-top: 0;
+  padding-bottom: 0.5rem;
+}
+
+.training-form__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.training-form .btn--training,
+.training-form .btn--training-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 1.35rem;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background var(--duration) var(--ease),
+    color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+}
+
+.training-form .btn--training {
+  min-width: 148px;
+  border: 0;
+  background: var(--orange);
+  color: var(--white);
+}
+
+.training-form .btn--training:hover,
+.training-form .btn--training:focus-visible {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.training-form .btn--training:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.training-form .btn--training-back {
+  min-width: 110px;
+  border: 1px solid var(--navy);
+  background: var(--white);
+  color: var(--navy);
+}
+
+.training-form .btn--training-back:hover,
+.training-form .btn--training-back:focus-visible {
+  background: var(--navy);
+  border-color: transparent;
+  color: var(--white);
+}
+
+.training-form .btn--training-back:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.training-form .btn--training[hidden],
+.training-form .btn--training-back[hidden] {
+  display: none !important;
+}
+
+.training-form .form-note {
+  margin: 0;
+  min-height: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: rgba(0, 29, 43, 0.62);
+}
+
+.training-form .form-note:empty {
+  display: none;
+}
+
+.training-form .form-note.is-success {
+  color: var(--verified);
+}
+
+.training-form .form-note.is-error {
+  color: var(--fake);
+}
+
+@media (max-width: 600px) {
+  .training-form__nav {
+    flex-direction: column-reverse;
+  }
+
+  .training-form .btn--training,
+  .training-form .btn--training-back {
+    width: 100%;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .training-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .training-main {
+    padding: clamp(5.75rem, 18vw, 7rem) 0 clamp(3rem, 10vw, 4rem);
+  }
+
+  .training-fields,
+  .training-radios {
+    grid-template-columns: 1fr;
+  }
+
+  .training-panel {
+    padding: 1.35rem;
+    border-radius: 10px;
+  }
+}

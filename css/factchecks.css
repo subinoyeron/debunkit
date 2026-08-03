@@ -177,65 +177,43 @@
   display: block;
 }
 
-.fc-pagination {
+.fc-hub__more {
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
 }
 
-.fc-pagination[hidden] {
-  display: none;
-}
-
-.fc-pagination__pages {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.fc-pagination__btn {
+.fc-load-more {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 36px;
-  min-height: 36px;
-  padding: 0 12px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  min-height: 48px;
+  padding: 0 28px;
+  border: 0;
   border-radius: 2px;
-  background: transparent;
-  color: var(--cream);
+  background: var(--orange);
+  color: var(--navy);
   font: inherit;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   line-height: 1;
   cursor: pointer;
   transition:
     background var(--duration) var(--ease),
-    color var(--duration) var(--ease),
-    border-color var(--duration) var(--ease);
+    color var(--duration) var(--ease);
 }
 
-.fc-pagination__btn:hover:not(:disabled) {
-  border-color: var(--white);
-  color: var(--white);
+.fc-load-more[hidden] {
+  display: none !important;
 }
 
-.fc-pagination__btn.is-active {
-  background: var(--orange);
-  border-color: var(--orange);
+.fc-load-more:hover,
+.fc-load-more:focus-visible {
+  background: var(--white);
   color: var(--navy);
 }
 
-.fc-pagination__btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-.fc-pagination__btn:focus-visible {
+.fc-load-more:focus-visible {
   outline: 2px solid var(--orange);
   outline-offset: 3px;
 }
@@ -265,8 +243,7 @@
     grid-template-columns: 1fr;
   }
 
-  .fc-filters__btn,
-  .fc-pagination__btn {
+  .fc-filters__btn {
     min-height: 34px;
     font-size: 13px;
   }

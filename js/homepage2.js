@@ -724,9 +724,8 @@
     gridSel,
     emptySel,
     searchSel,
-    paginationSel,
+    loadMoreSel,
     titleSel,
-    pageBtnClass,
     pageSize = 16,
   }) => {
     const filters = document.querySelector(filtersSel);
@@ -738,13 +737,10 @@
     const empty = document.querySelector(emptySel);
     const searchForm = document.querySelector(searchSel);
     const searchInput = searchForm?.querySelector('input[type="search"]');
-    const pagination = document.querySelector(paginationSel);
-    const pageNumbers = pagination?.querySelector("[data-page-numbers]");
-    const prevBtn = pagination?.querySelector("[data-page-prev]");
-    const nextBtn = pagination?.querySelector("[data-page-next]");
+    const loadMoreBtn = document.querySelector(loadMoreSel);
     let activeFilter = "all";
     let query = "";
-    let currentPage = 1;
+    let visibleCount = pageSize;
 
     const matchingCards = () =>
       cards.filter((card) => {
@@ -758,38 +754,19 @@
 
     const render = () => {
       const matched = matchingCards();
-      const totalPages = Math.max(1, Math.ceil(matched.length / pageSize));
-      if (currentPage > totalPages) currentPage = totalPages;
+      if (visibleCount > matched.length) visibleCount = matched.length || pageSize;
 
-      const start = (currentPage - 1) * pageSize;
-      const end = start + pageSize;
-      const pageSet = new Set(matched.slice(start, end));
+      const visibleSet = new Set(matched.slice(0, visibleCount));
 
       cards.forEach((card) => {
-        card.classList.toggle("is-hidden", !pageSet.has(card));
+        card.classList.toggle("is-hidden", !visibleSet.has(card));
       });
 
       empty?.classList.toggle("is-visible", matched.length === 0);
 
-      if (pagination && pageNumbers) {
-        const showPager = matched.length > pageSize;
-        pagination.hidden = !showPager || matched.length === 0;
-        pageNumbers.innerHTML = "";
-        for (let page = 1; page <= totalPages; page += 1) {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = pageBtnClass;
-          btn.dataset.page = String(page);
-          btn.textContent = String(page);
-          btn.setAttribute("aria-label", `Page ${page}`);
-          if (page === currentPage) {
-            btn.classList.add("is-active");
-            btn.setAttribute("aria-current", "page");
-          }
-          pageNumbers.appendChild(btn);
-        }
-        if (prevBtn) prevBtn.disabled = currentPage <= 1;
-        if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+      if (loadMoreBtn) {
+        const showMore = matched.length > visibleCount;
+        loadMoreBtn.hidden = !showMore;
       }
 
       filterButtons.forEach((btn) => {
@@ -799,47 +776,34 @@
       });
     };
 
+    const resetVisible = () => {
+      visibleCount = pageSize;
+      render();
+    };
+
     filters.addEventListener("click", (event) => {
       const btn = event.target.closest("[data-filter]");
       if (!btn || !filters.contains(btn)) return;
       activeFilter = btn.dataset.filter;
-      currentPage = 1;
-      render();
+      resetVisible();
     });
 
     searchForm?.addEventListener("submit", (event) => {
       event.preventDefault();
       query = (searchInput?.value ?? "").trim().toLowerCase();
-      currentPage = 1;
-      render();
+      resetVisible();
     });
 
     searchInput?.addEventListener("input", () => {
       if ((searchInput.value ?? "").trim() === "" && query) {
         query = "";
-        currentPage = 1;
-        render();
+        resetVisible();
       }
     });
 
-    pagination?.addEventListener("click", (event) => {
-      const target = event.target.closest("button");
-      if (!target || !pagination.contains(target)) return;
-
-      const matched = matchingCards();
-      const totalPages = Math.max(1, Math.ceil(matched.length / pageSize));
-
-      if (target.matches("[data-page-prev]")) {
-        currentPage = Math.max(1, currentPage - 1);
-      } else if (target.matches("[data-page-next]")) {
-        currentPage = Math.min(totalPages, currentPage + 1);
-      } else if (target.dataset.page) {
-        currentPage = Number(target.dataset.page) || 1;
-      } else {
-        return;
-      }
+    loadMoreBtn?.addEventListener("click", () => {
+      visibleCount += pageSize;
       render();
-      grid.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
     const urlQuery = new URLSearchParams(location.search).get("q");
@@ -856,9 +820,8 @@
     gridSel: "[data-factcheck-grid]",
     emptySel: "[data-factcheck-empty]",
     searchSel: "[data-factcheck-search]",
-    paginationSel: "[data-factcheck-pagination]",
+    loadMoreSel: "[data-factcheck-load-more]",
     titleSel: ".fc-card__title",
-    pageBtnClass: "fc-pagination__btn",
   });
 
   initContentHub({
@@ -866,8 +829,7 @@
     gridSel: "[data-report-grid]",
     emptySel: "[data-report-empty]",
     searchSel: "[data-report-search]",
-    paginationSel: "[data-report-pagination]",
+    loadMoreSel: "[data-report-load-more]",
     titleSel: ".report-card__title",
-    pageBtnClass: "rp-pagination__btn",
   });
 })();
