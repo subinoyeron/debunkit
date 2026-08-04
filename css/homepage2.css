@@ -421,20 +421,23 @@ ul {
   gap: clamp(1rem, 2.2vw, 2rem);
   padding: 14px 28px;
   background: rgba(16, 45, 59, 0.92);
-  border-radius: 999px;
+  border-radius: 2px;
 }
 
 .header__nav a {
-  color: var(--cream);
+  color: var(--white);
   font-size: 14px;
   font-weight: 600;
-  opacity: 0.88;
-  transition: opacity var(--duration) var(--ease);
+  opacity: 1;
+  transition:
+    color var(--duration) var(--ease),
+    opacity var(--duration) var(--ease);
 }
 
 .header__nav a:hover,
 .header__nav a:focus-visible,
 .header__nav a[aria-current="page"] {
+  color: var(--orange);
   opacity: 1;
   outline: none;
 }
@@ -1103,26 +1106,21 @@ ul {
 }
 
 .about-demo__claim {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px 8px;
   margin: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--body);
 }
 
-.about-demo__bar {
-  position: relative;
-  height: 12px;
-  border-radius: 3px;
-  background: #dfe4e9;
-  overflow: hidden;
+.about-demo__char {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
-.about-demo__bar-fill {
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 147, 0, 0.55);
-  transform: scaleX(0);
-  transform-origin: left center;
+.about-demo__char.is-selected {
+  background: rgba(255, 147, 0, 0.32);
+  border-radius: 1px;
 }
 
 .about-demo__actions {
@@ -1399,9 +1397,14 @@ ul {
 
 .tip__copy {
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
 }
 
 .tip__title {
+  margin: 0;
   font-size: clamp(1.75rem, 3.2vw, 48px);
   font-weight: 600;
   font-stretch: 75%;
@@ -1428,7 +1431,11 @@ ul {
 }
 
 .tip__copy .btn--tip {
-  margin-top: 36px;
+  margin-top: 0;
+  min-height: 56px;
+  padding: 18px 28px;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .tip__visual {
@@ -1931,12 +1938,35 @@ ul {
   transform: none;
 }
 
+/*
+  Section backgrounds must stay painted. Fading the whole section lets the
+  body color flash through (white under navy bands). Animate the shell only.
+*/
+section[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+section[data-reveal] > .shell {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.65s var(--ease),
+    transform 0.65s var(--ease);
+}
+
+section[data-reveal].is-visible > .shell {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
   [data-reveal],
+  section[data-reveal] > .shell,
   .service-card__body,
   .service-card__desc,
   .about-demo__window,
@@ -1949,7 +1979,8 @@ ul {
     animation: none;
   }
 
-  [data-reveal] {
+  [data-reveal],
+  section[data-reveal] > .shell {
     opacity: 1;
     transform: none;
   }

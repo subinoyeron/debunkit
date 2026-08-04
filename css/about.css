@@ -1,11 +1,15 @@
 /* About page — extends homepage2 design system */
 
+body.about-page {
+  background: var(--navy);
+}
+
 .about-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   background: var(--navy);
-  padding: clamp(6.25rem, 11vw, 8.25rem) 0 clamp(3.25rem, 6.5vw, 4.75rem);
+  padding: clamp(6.25rem, 11vw, 8.25rem) 0 0;
 }
 
 .about-hero__stage {
@@ -25,6 +29,18 @@
   letter-spacing: -0.01em;
   color: var(--orange);
   text-wrap: pretty;
+}
+
+.about-hero__stage .hero__rule {
+  margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+}
+
+.about-page .what {
+  padding-top: clamp(2.5rem, 4.5vw, 3.25rem);
+}
+
+.about-page .what__header {
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 }
 
 .about-cards {
@@ -169,16 +185,17 @@
 .about-team {
   background: var(--white);
   padding: clamp(4rem, 7vw, 5.5rem) 0;
+  color: var(--navy);
 }
 
 .about-team__title {
-  margin: 0 0 clamp(2rem, 4vw, 2.75rem);
+  margin: 0 0 clamp(2.25rem, 4.5vw, 3rem);
   font-size: clamp(2rem, 4vw, 54px);
   font-weight: 600;
   font-stretch: 75%;
   font-variation-settings: "wdth" 75;
   line-height: 1.15;
-  color: var(--body);
+  color: var(--navy);
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
 }
@@ -186,8 +203,7 @@
 .about-team__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--grid-gap);
-  row-gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  gap: clamp(1.75rem, 3.5vw, 2.5rem) clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
 .team-card {
@@ -195,7 +211,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.85rem;
   overflow: visible;
   border-radius: 0;
   background: transparent;
@@ -210,8 +226,8 @@
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: center top;
-  border-radius: 28px;
-  background: #2a2a2a;
+  border-radius: 0;
+  background: #d7dde2;
 }
 
 .team-card__info {
@@ -222,26 +238,31 @@
   bottom: auto;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 0 0.15rem;
+  gap: 0;
+  padding: 0;
 }
 
 .team-card__name {
   margin: 0;
+  padding: 0;
+  border-bottom: 0;
   font-family: "Open Sans", system-ui, sans-serif;
-  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
   font-weight: 700;
   line-height: 1.15;
   color: var(--navy);
 }
 
 .team-card__role {
+  display: block;
   margin: 0;
+  padding: 0.55rem 0 0.7rem;
+  border-bottom: 1px solid #9aafbb;
   font-family: "Open Sans", system-ui, sans-serif;
-  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  font-size: clamp(0.875rem, 1.1vw, 1rem);
   font-weight: 400;
   line-height: 1.3;
-  color: var(--muted);
+  color: var(--navy);
 }
 
 .about-focus {
@@ -309,7 +330,7 @@
 
 @media (max-width: 600px) {
   .about-hero {
-    padding: clamp(5.75rem, 18vw, 7.25rem) 0 clamp(2.75rem, 8vw, 3.75rem);
+    padding: clamp(5.75rem, 18vw, 7.25rem) 0 0;
   }
 
   .about-cards {
@@ -322,6 +343,7 @@
 
   .about-team__grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .about-focus__tags {

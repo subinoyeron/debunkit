@@ -1559,6 +1559,25 @@ input {
   transform: none;
 }
 
+/* Keep section backgrounds painted; fade inner shell only */
+section[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+section[data-reveal] > .shell {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms var(--ease),
+    transform 700ms var(--ease);
+}
+
+section[data-reveal].is-visible > .shell {
+  opacity: 1;
+  transform: none;
+}
+
 /* ==========================================================================
    Responsive
    ========================================================================== */
@@ -1888,7 +1907,8 @@ input {
     animation-duration: 0.01ms !important;
   }
 
-  [data-reveal] {
+  [data-reveal],
+  section[data-reveal] > .shell {
     opacity: 1;
     transform: none;
   }

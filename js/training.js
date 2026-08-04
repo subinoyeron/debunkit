@@ -24,7 +24,6 @@
     name: form.querySelector("#train-name"),
     email: form.querySelector("#train-email"),
     org: form.querySelector("#train-org"),
-    orgType: form.querySelector("#train-org-type"),
     participants: form.querySelector("#train-participants"),
     goals: form.querySelector("#train-goals"),
   };
@@ -121,7 +120,6 @@
     const name = fields.name?.value.trim() ?? "";
     const email = fields.email?.value.trim() ?? "";
     const org = fields.org?.value.trim() ?? "";
-    const orgType = fields.orgType?.value ?? "";
     let firstInvalid = null;
 
     const fail = (el, message) => {
@@ -134,7 +132,6 @@
     else if (!isValidEmail(email))
       fail(fields.email, "Enter a valid email address.");
     if (!org) fail(fields.org, "Please enter your organization name.");
-    if (!orgType) fail(fields.orgType, "Please select an organization type.");
 
     if (firstInvalid) {
       note?.classList.add("is-error");
@@ -222,7 +219,6 @@
         "Thanks — we received your training request and will reply within five working days.";
     }
     form.reset();
-    if (fields.orgType) fields.orgType.selectedIndex = 0;
     showStep(1);
   });
 

@@ -254,3 +254,70 @@
     font-size: 14px;
   }
 }
+
+/* —— Factcheck article (reuses reports article layout) —— */
+
+.factcheck-article-page {
+  background: var(--white);
+  color: var(--navy);
+}
+
+.factcheck-article-page .fca__verdict-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin: 0 0 18px;
+}
+
+.factcheck-article-page .fca__verdict-row .badge--fake img {
+  width: 12px;
+  height: 12px;
+  display: block;
+  object-fit: contain;
+}
+
+.factcheck-article-page .ra__header .ra__meta {
+  margin-top: 0;
+}
+
+.factcheck-article-page .fca__sources {
+  margin: 0.35em 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #535e5d;
+}
+
+.factcheck-article-page .fca__sources-label {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.factcheck-article-page .fca__source-link {
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.factcheck-article-page .fca__source-link:hover,
+.factcheck-article-page .fca__source-link:focus-visible {
+  color: var(--orange);
+}
+
+.factcheck-article-page .fca__related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.factcheck-article-page .fca__related-grid .fc-card__title {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+}
+
+@media (max-width: 900px) {
+  .factcheck-article-page .fca__related-grid {
+    grid-template-columns: 1fr;
+  }
+}

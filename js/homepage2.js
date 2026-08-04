@@ -171,33 +171,33 @@
     const timeEl = root.querySelector(".about-demo__time");
     if (!claim || !cursor || !chip) return;
 
-    /* Claim copy is drawn as wireframe bars: each number is one word width. */
+    /* Real claim copy cycles through three common false narratives. */
     const STATUSES = [
       {
-        words: [44, 66, 38, 58, 34, 72, 26, 52],
+        claim: "Haitian immigrants in Ohio are stealing and eating pets.",
         likes: "128",
         comments: "47",
         shares: "19",
         time: 62,
-        width: 360,
+        width: 380,
         chip: "top-right",
       },
       {
-        words: [36, 58, 30, 68, 42, 24, 60, 46, 32],
+        claim: "Muslims are imposing Sharia law in Texas.",
         likes: "2.4K",
         comments: "891",
         shares: "312",
         time: 54,
-        width: 400,
+        width: 360,
         chip: "mid-left",
       },
       {
-        words: [52, 40, 62, 28, 46, 70, 34],
+        claim: "Indian immigrants are taking all American tech jobs.",
         likes: "56",
         comments: "12",
         shares: "8",
         time: 68,
-        width: 340,
+        width: 400,
         chip: "below-start",
       },
     ];
@@ -205,31 +205,14 @@
     let statusIndex = 0;
     let activeStatus = STATUSES[0];
 
-    const buildBars = (widths) => {
+    const buildChars = (text) => {
       claim.textContent = "";
-      return widths.map((width) => {
-        const bar = document.createElement("span");
-        bar.className = "about-demo__bar";
-        bar.style.width = `${width}px`;
-        const fill = document.createElement("span");
-        fill.className = "about-demo__bar-fill";
-        bar.appendChild(fill);
-        claim.appendChild(bar);
-        return bar;
-      });
-    };
-
-    const setSelection = (progress) => {
-      const total = activeStatus.words.reduce((sum, w) => sum + w, 0);
-      const covered = total * progress;
-      let before = 0;
-
-      bars.forEach((bar, i) => {
-        const width = activeStatus.words[i];
-        const ratio = Math.max(0, Math.min(1, (covered - before) / width));
-        const fill = bar.firstElementChild;
-        if (fill) fill.style.transform = `scaleX(${ratio})`;
-        before += width;
+      return [...text].map((ch) => {
+        const span = document.createElement("span");
+        span.className = "about-demo__char";
+        span.textContent = ch;
+        claim.appendChild(span);
+        return span;
       });
     };
 
@@ -240,10 +223,10 @@
       if (likesEl) likesEl.textContent = `Like · ${status.likes}`;
       if (commentsEl) commentsEl.textContent = `Comment · ${status.comments}`;
       if (sharesEl) sharesEl.textContent = `Share · ${status.shares}`;
-      return buildBars(status.words);
+      return buildChars(status.claim);
     };
 
-    let bars = applyStatus(STATUSES[0]);
+    let chars = applyStatus(STATUSES[0]);
 
     const pointInStage = (el, edge = "start") => {
       const stageRect = stage.getBoundingClientRect();
@@ -254,31 +237,8 @@
           : edge === "center"
             ? rect.left + rect.width / 2 - stageRect.left
             : rect.left - stageRect.left;
-      const y = rect.bottom - stageRect.top - 1;
+      const y = rect.top + rect.height * 0.65 - stageRect.top;
       return { x, y };
-    };
-
-    /* Follows the sweeping highlight, so the cursor tracks bars across wrapped lines. */
-    const pointAtProgress = (progress) => {
-      const stageRect = stage.getBoundingClientRect();
-      const total = activeStatus.words.reduce((sum, w) => sum + w, 0);
-      const covered = total * progress;
-      let before = 0;
-
-      for (let i = 0; i < bars.length; i += 1) {
-        const width = activeStatus.words[i];
-        if (covered <= before + width || i === bars.length - 1) {
-          const rect = bars[i].getBoundingClientRect();
-          const within = Math.max(0, Math.min(1, (covered - before) / width));
-          return {
-            x: rect.left + rect.width * within - stageRect.left,
-            y: rect.bottom - stageRect.top - 1,
-          };
-        }
-        before += width;
-      }
-
-      return { x: 0, y: 0 };
     };
 
     const setCursor = (x, y, withTransition = true) => {
@@ -297,7 +257,7 @@
       );
 
     const chipSlotPos = (mode, stageRect, chipW, chipH) => {
-      const first = bars[0].getBoundingClientRect();
+      const first = chars[0].getBoundingClientRect();
       const claimRect = claim.getBoundingClientRect();
       const clampPos = (x, y) => ({
         x: Math.max(10, Math.min(x, stageRect.width - chipW - 10)),
@@ -320,7 +280,7 @@
     };
 
     const placeChip = (mode = activeStatus.chip) => {
-      if (!bars.length) return;
+      if (!chars.length) return;
 
       const stageRect = stage.getBoundingClientRect();
       const chipW = chip.offsetWidth || 92;
@@ -337,8 +297,8 @@
         right: pos.x + chipW,
         bottom: pos.y + chipH,
       };
-      const end = pointInStage(bars[bars.length - 1], "end");
-      const start = pointInStage(bars[0], "start");
+      const end = pointInStage(chars[chars.length - 1], "end");
+      const start = pointInStage(chars[0], "start");
       let rest = { x: end.x, y: end.y };
 
       if (mode === "top-right") {
@@ -370,7 +330,7 @@
 
     if (reduceMotion) {
       root.classList.add("is-post-in", "is-chip-in", "is-cursor-on");
-      setSelection(1);
+      chars.forEach((span) => span.classList.add("is-selected"));
       placeChip();
       return;
     }
@@ -393,7 +353,7 @@
 
     const resetVisuals = () => {
       root.classList.remove("is-post-in", "is-cursor-on", "is-chip-in", "is-fading");
-      setSelection(0);
+      chars.forEach((span) => span.classList.remove("is-selected"));
       chip.style.left = "";
       chip.style.top = "";
       const stageRect = stage.getBoundingClientRect();
@@ -405,7 +365,7 @@
 
       const status = STATUSES[statusIndex % STATUSES.length];
       statusIndex += 1;
-      bars = applyStatus(status);
+      chars = applyStatus(status);
       resetVisuals();
 
       await wait(180);
@@ -415,8 +375,8 @@
       await wait(900);
       if (!running) return;
 
-      const start = pointInStage(bars[0], "start");
-      const end = pointInStage(bars[bars.length - 1], "end");
+      const start = pointInStage(chars[0], "start");
+      const end = pointInStage(chars[chars.length - 1], "end");
 
       root.classList.add("is-cursor-on");
       const stageRect = stage.getBoundingClientRect();
@@ -426,8 +386,7 @@
       await wait(600);
       if (!running) return;
 
-      const totalWidth = status.words.reduce((sum, w) => sum + w, 0);
-      const selectDuration = Math.max(1400, Math.min(2000, totalWidth * 4));
+      const selectDuration = Math.max(1400, Math.min(2000, status.claim.length * 32));
       const startTime = performance.now();
 
       await new Promise((resolve) => {
@@ -438,15 +397,22 @@
           }
           const t = Math.min(1, (now - startTime) / selectDuration);
           const eased = 1 - Math.pow(1 - t, 2.2);
+          const count = Math.floor(eased * chars.length);
 
-          setSelection(eased);
-          const point = pointAtProgress(eased);
-          setCursor(point.x, point.y, false);
+          chars.forEach((span, i) => {
+            span.classList.toggle("is-selected", i < count);
+          });
+
+          setCursor(
+            start.x + (end.x - start.x) * eased,
+            start.y + (end.y - start.y) * eased,
+            false
+          );
 
           if (t < 1) {
             rafId = requestAnimationFrame(tick);
           } else {
-            setSelection(1);
+            chars.forEach((span) => span.classList.add("is-selected"));
             setCursor(end.x, end.y, false);
             resolve();
           }
