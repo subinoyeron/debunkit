@@ -101,7 +101,7 @@
     if (backBtn) backBtn.hidden = step === 1;
     if (nextBtn) {
       nextBtn.hidden = step === totalSteps;
-      nextBtn.textContent = step === 1 ? "Start Application" : "Next";
+      nextBtn.textContent = "Next";
     }
     if (submitBtn) submitBtn.hidden = step !== totalSteps;
 

@@ -274,6 +274,10 @@
   background: var(--navy);
 }
 
+.factcheck-story-page .header__nav {
+  background: var(--navy);
+}
+
 .fcs {
   padding: 140px 0 0;
 }

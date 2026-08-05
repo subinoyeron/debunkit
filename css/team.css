@@ -1,0 +1,143 @@
+/* DebunkIt — Team profile (report-article 12-col grid) */
+
+.team-profile-page {
+  background: var(--white);
+  color: var(--navy);
+}
+
+.team-profile-page .logo img {
+  filter: none;
+}
+
+.team-profile-page .logo__fallback {
+  color: var(--navy);
+}
+
+.team-profile-page .menu-toggle span {
+  background: var(--navy);
+}
+
+.team-profile-page .header__nav {
+  background: var(--navy);
+}
+
+.tm {
+  padding: 140px 0 clamp(4rem, 8vw, 5.5rem);
+}
+
+.tm__layout {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  row-gap: clamp(2rem, 4vw, 2.5rem);
+  align-items: start;
+}
+
+.tm__aside {
+  grid-column: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 0;
+  min-width: 0;
+}
+
+.tm__photo {
+  margin: 0;
+  width: 100%;
+  max-width: 180px;
+}
+
+.tm__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  background: #eef1f4;
+}
+
+.tm__main {
+  grid-column: 4 / 10;
+  min-width: 0;
+  max-width: 38rem;
+}
+
+.tm__header {
+  margin: 0 0 clamp(1.75rem, 3vw, 2.25rem);
+  padding-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-bottom: 1px solid rgba(0, 29, 43, 0.12);
+}
+
+.tm__title {
+  margin: 0 0 10px;
+  font-size: clamp(2.1rem, 4.2vw, 3.25rem);
+  font-weight: 700;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--orange);
+}
+
+.tm__role {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgba(0, 29, 43, 0.72);
+}
+
+.tm__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15em;
+}
+
+.tm__body p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--navy);
+}
+
+.tm__body a {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.tm__body a:hover {
+  color: var(--navy);
+}
+
+@media (max-width: 900px) {
+  .tm__layout {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 1.75rem;
+  }
+
+  .tm__aside {
+    grid-column: 1 / -1;
+  }
+
+  .tm__photo {
+    max-width: 160px;
+  }
+
+  .tm__main {
+    grid-column: 1 / -1;
+    max-width: 38rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .tm {
+    padding: clamp(5.75rem, 18vw, 7rem) 0 clamp(3rem, 10vw, 4rem);
+  }
+}

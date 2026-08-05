@@ -18,6 +18,10 @@
   background: var(--navy);
 }
 
+.reports-page .header__nav {
+  background: var(--navy);
+}
+
 .rp-hub {
   padding: 140px 0 clamp(4rem, 8vw, 5.5rem);
 }
@@ -274,6 +278,22 @@
 
 .report-article-page {
   background: var(--white);
+}
+
+.report-article-page .logo img {
+  filter: none;
+}
+
+.report-article-page .logo__fallback {
+  color: var(--navy);
+}
+
+.report-article-page .menu-toggle span {
+  background: var(--navy);
+}
+
+.report-article-page .header__nav {
+  background: var(--navy);
 }
 
 .ra {
