@@ -508,13 +508,13 @@ ul {
 .hero__network {
   display: block;
   width: auto;
-  height: clamp(8.5rem, 16vw, 13.5rem);
-  max-width: min(48vw, 500px);
+  height: clamp(13rem, 26vw, 21rem);
+  max-width: min(46vw, 420px);
   object-fit: contain;
   object-position: right center;
   justify-self: end;
-  margin-right: clamp(1.5rem, 4vw, 4rem);
-  transform: translateX(-1.5rem);
+  margin-right: clamp(0.75rem, 2.5vw, 2.5rem);
+  transform: translateX(-0.75rem);
   user-select: none;
 }
 
@@ -1990,10 +1990,10 @@ section[data-reveal].is-visible > .shell {
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 1200px) {
   .hero__network {
-    height: clamp(7.5rem, 14vw, 11rem);
-    max-width: min(44vw, 400px);
-    margin-right: clamp(1rem, 3vw, 2.5rem);
-    transform: translateX(-1rem);
+    height: clamp(11rem, 22vw, 16rem);
+    max-width: min(42vw, 360px);
+    margin-right: clamp(0.75rem, 2vw, 2rem);
+    transform: translateX(-0.75rem);
   }
 
   .hero__lede {
@@ -2042,8 +2042,8 @@ section[data-reveal].is-visible > .shell {
 
   .hero__network {
     justify-self: end;
-    height: clamp(5.5rem, 22vw, 8rem);
-    max-width: min(70%, 280px);
+    height: clamp(9rem, 36vw, 13rem);
+    max-width: min(60%, 280px);
   }
 
   .header__inner {
