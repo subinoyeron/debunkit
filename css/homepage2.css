@@ -521,12 +521,13 @@ ul {
 .hero__title {
   margin: 0;
   font-size: clamp(2.5rem, 5.8vw, 88px);
-  font-weight: 600;
-  font-stretch: 100%;
-  font-variation-settings: "wdth" 100;
+  font-weight: 700;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
   line-height: 1.05;
   color: var(--orange-title);
   letter-spacing: -0.01em;
+  text-transform: uppercase;
   overflow: visible;
 }
 
@@ -1377,12 +1378,12 @@ ul {
 /* ===================== TIP BAND ===================== */
 .tip {
   background: var(--white);
-  padding: clamp(3.5rem, 6vw, 5rem) 0 0;
+  padding: clamp(2.5rem, 5vw, 4rem) 0 0;
 }
 
 .tip__band {
-  --tip-band-h: 560px;
-  --tip-band-pad: 56px;
+  --tip-band-h: 420px;
+  --tip-band-pad: 40px;
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 540px) minmax(0, 1fr);
@@ -1400,7 +1401,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .tip__title {
@@ -1432,9 +1433,9 @@ ul {
 
 .tip__copy .btn--tip {
   margin-top: 0;
-  min-height: 56px;
-  padding: 18px 28px;
-  font-size: 18px;
+  min-height: 48px;
+  padding: 14px 24px;
+  font-size: 17px;
   font-weight: 700;
 }
 
@@ -2022,8 +2023,8 @@ section[data-reveal].is-visible > .shell {
   }
 
   .tip__band {
-    --tip-band-h: 440px;
-    --tip-band-pad: 40px;
+    --tip-band-h: 360px;
+    --tip-band-pad: 32px;
     grid-template-columns: 1fr 0.85fr;
   }
 
@@ -2110,12 +2111,12 @@ section[data-reveal].is-visible > .shell {
 
   .tip__band {
     --tip-band-h: none;
-    --tip-band-pad: 32px;
+    --tip-band-pad: 28px;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
     height: auto;
     min-height: 0;
-    padding: 48px var(--tip-band-pad) 0;
+    padding: 36px var(--tip-band-pad) 0;
   }
 
   .tip__visual {
@@ -2211,7 +2212,7 @@ section[data-reveal].is-visible > .shell {
   }
 
   .tip__band {
-    --tip-band-pad: 24px;
-    padding: 40px var(--tip-band-pad) 0;
+    --tip-band-pad: 20px;
+    padding: 32px var(--tip-band-pad) 0;
   }
 }

@@ -154,17 +154,25 @@
               />
             </div>
 
-            <div class="submit-field">
-              <label for="claim-link">Link</label>
-              <input
-                id="claim-link"
-                name="link"
-                type="url"
-                inputmode="url"
-                autocomplete="url"
-                placeholder="Paste the URL"
-                required
-              />
+            <div class="submit-field submit-field--links" data-claim-links>
+              <span class="submit-field__label" id="claim-links-label">Link</span>
+              <div class="submit-links" data-link-list role="group" aria-labelledby="claim-links-label">
+                <div class="submit-links__row">
+                  <input
+                    id="claim-link"
+                    name="link[]"
+                    type="url"
+                    inputmode="url"
+                    autocomplete="url"
+                    placeholder="Paste the URL"
+                    required
+                    aria-label="Link 1"
+                  />
+                </div>
+              </div>
+              <button class="submit-links__add" type="button" data-add-link>
+                + Add another link
+              </button>
             </div>
 
             <div class="submit-field submit-field--claim">
@@ -220,8 +228,7 @@
               <img src="../images/logo/logo.svg" alt="" width="140" height="32" />
             </a>
             <p class="footer__tagline">
-              Rapid-response fact-checking for communities targeted by
-              misinformation online.
+              Because Facts Matter.
             </p>
           </div>
 

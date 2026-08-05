@@ -553,7 +553,8 @@
   if (claimForm) {
     const note = claimForm.querySelector("[data-form-note]");
     const platformInput = claimForm.querySelector("#claim-platform");
-    const linkInput = claimForm.querySelector("#claim-link");
+    const linkList = claimForm.querySelector("[data-link-list]");
+    const addLinkBtn = claimForm.querySelector("[data-add-link]");
     const claimInput = claimForm.querySelector("#claim-text");
     const targetInput = claimForm.querySelector("#claim-target");
     const emailInput = claimForm.querySelector("#claim-email");
@@ -566,16 +567,59 @@
         return false;
       }
     };
+    const linkInputs = () => [...(linkList?.querySelectorAll('input[name="link[]"]') ?? [])];
+    const renumberLinks = () => {
+      linkInputs().forEach((input, index) => {
+        input.setAttribute("aria-label", `Link ${index + 1}`);
+        if (index === 0) {
+          input.id = "claim-link";
+          input.required = true;
+        } else {
+          input.removeAttribute("id");
+          input.required = false;
+        }
+      });
+    };
+    const addLinkRow = () => {
+      if (!linkList) return;
+      const index = linkInputs().length + 1;
+      const row = document.createElement("div");
+      row.className = "submit-links__row";
+      row.innerHTML = `
+        <input
+          name="link[]"
+          type="url"
+          inputmode="url"
+          autocomplete="url"
+          placeholder="Paste another URL"
+          aria-label="Link ${index}"
+        />
+        <button class="submit-links__remove" type="button" aria-label="Remove link">×</button>
+      `;
+      linkList.appendChild(row);
+      renumberLinks();
+      row.querySelector("input")?.focus();
+    };
+
+    addLinkBtn?.addEventListener("click", addLinkRow);
+    linkList?.addEventListener("click", (event) => {
+      const removeBtn = event.target.closest(".submit-links__remove");
+      if (!removeBtn || !linkList.contains(removeBtn)) return;
+      removeBtn.closest(".submit-links__row")?.remove();
+      renumberLinks();
+    });
 
     claimForm.addEventListener("submit", (event) => {
       event.preventDefault();
       note?.classList.remove("is-success", "is-error");
-      [platformInput, linkInput, claimInput, targetInput, emailInput].forEach(
+      [platformInput, claimInput, targetInput, emailInput, ...linkInputs()].forEach(
         (el) => el?.classList.remove("is-invalid")
       );
 
       const platform = platformInput?.value.trim() ?? "";
-      const link = linkInput?.value.trim() ?? "";
+      const links = linkInputs()
+        .map((input) => input.value.trim())
+        .filter(Boolean);
       const claim = claimInput?.value.trim() ?? "";
       const target = targetInput?.value.trim() ?? "";
       const email = emailInput?.value.trim() ?? "";
@@ -588,11 +632,24 @@
         return;
       }
 
-      if (!isValidUrl(link)) {
-        linkInput?.classList.add("is-invalid");
+      if (!links.length) {
+        const first = linkInputs()[0];
+        first?.classList.add("is-invalid");
+        note?.classList.add("is-error");
+        if (note) note.textContent = "Paste at least one valid URL (including https://).";
+        first?.focus();
+        return;
+      }
+
+      const invalidLink = linkInputs().find((input) => {
+        const value = input.value.trim();
+        return value && !isValidUrl(value);
+      });
+      if (invalidLink || !links.every(isValidUrl)) {
+        (invalidLink ?? linkInputs()[0])?.classList.add("is-invalid");
         note?.classList.add("is-error");
         if (note) note.textContent = "Paste a valid URL (including https://).";
-        linkInput?.focus();
+        (invalidLink ?? linkInputs()[0])?.focus();
         return;
       }
 
@@ -627,6 +684,11 @@
           : "Thanks — we received your claim.";
       }
       claimForm.reset();
+      // Reset to a single link row after successful submit
+      if (linkList) {
+        [...linkList.querySelectorAll(".submit-links__row")].slice(1).forEach((row) => row.remove());
+        renumberLinks();
+      }
     });
   }
 

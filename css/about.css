@@ -16,10 +16,16 @@ body.about-page {
   position: relative;
 }
 
-.about-hero__title {
-  margin: 0;
+.about-hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.1rem, 2.2vw, 1.5rem);
   max-width: none;
   width: 100%;
+}
+
+.about-hero__title {
+  margin: 0;
   font-family: "Open Sans", system-ui, sans-serif;
   font-size: clamp(1.5rem, 3.6vw, 42px);
   font-weight: 600;
@@ -29,6 +35,34 @@ body.about-page {
   letter-spacing: -0.01em;
   color: var(--orange);
   text-wrap: pretty;
+}
+
+.about-hero__text,
+.about-hero__tagline {
+  margin: 0;
+  max-width: none;
+  width: 100%;
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-weight: 400;
+  font-stretch: 100%;
+  font-variation-settings: "wdth" 100;
+  line-height: 1.65;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.82);
+  text-wrap: pretty;
+}
+
+.about-hero__tagline {
+  margin-top: clamp(0.35rem, 1vw, 0.75rem);
+  max-width: none;
+  font-size: clamp(1.65rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--white);
 }
 
 .about-hero__stage .hero__rule {
