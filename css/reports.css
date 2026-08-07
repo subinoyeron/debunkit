@@ -895,6 +895,7 @@
   .ra__body {
     order: 8;
     margin-inline: var(--page-pad);
+    margin-top: 1.25rem;
   }
 
   .ra__faq {
