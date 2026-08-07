@@ -374,6 +374,7 @@
 
   .submit-hero__title {
     max-width: none;
+    font-size: clamp(1.5rem, 7vw, 2rem);
     color: var(--white);
   }
 
@@ -382,7 +383,8 @@
   }
 
   .submit-panel {
-    padding: 1.35rem;
+    max-width: none;
+    padding: 1.25rem;
     border-radius: 10px;
   }
 

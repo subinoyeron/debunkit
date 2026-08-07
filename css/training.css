@@ -550,13 +550,22 @@
     padding: clamp(5.75rem, 18vw, 7rem) 0 clamp(3rem, 10vw, 4rem);
   }
 
+  .training-hero__title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .training-hero__lead {
+    font-size: 14px;
+  }
+
   .training-fields,
   .training-radios {
     grid-template-columns: 1fr;
   }
 
   .training-panel {
-    padding: 1.35rem;
+    max-width: none;
+    padding: 1.25rem;
     border-radius: 10px;
   }
 }

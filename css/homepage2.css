@@ -598,20 +598,31 @@ ul {
 
 .fc-card__meta {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 8px;
   width: 100%;
   min-height: 28px;
 }
 
-/* Verdict + platform chips — identical fixed box */
+/* Verdict row, then platform row underneath */
 .fc-card__tags {
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 6px;
   min-width: 0;
-  height: 28px;
+  flex: 1 1 auto;
+}
+
+.fc-card__verdicts,
+.fc-card__platforms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  min-height: 28px;
 }
 
 .fc-card__tags .badge {
@@ -620,8 +631,8 @@ ul {
   justify-content: center;
   gap: 4px;
   box-sizing: border-box;
-  height: 100%;
-  min-height: 0;
+  height: 28px;
+  min-height: 28px;
   max-height: none;
   margin: 0;
   padding: 0 8px;
@@ -633,7 +644,7 @@ ul {
   border-radius: 0;
   overflow: hidden;
   flex: 0 0 auto;
-  align-self: stretch;
+  align-self: auto;
 }
 
 .badge {
@@ -1386,7 +1397,7 @@ ul {
   --tip-band-pad: 40px;
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 540px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
   grid-template-rows: var(--tip-band-h);
   gap: var(--grid-gap);
   align-items: stretch;
@@ -1398,10 +1409,7 @@ ul {
 
 .tip__copy {
   align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
+  min-width: 0;
 }
 
 .tip__title {
@@ -1410,9 +1418,15 @@ ul {
   font-weight: 600;
   font-stretch: 75%;
   font-variation-settings: "wdth" 75;
-  line-height: 1.15;
+  line-height: 1.35;
   color: var(--orange);
-  max-width: 540px;
+}
+
+.tip__title-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  white-space: nowrap;
 }
 
 .tip__mark {
@@ -1431,12 +1445,23 @@ ul {
   color: var(--cream);
 }
 
-.tip__copy .btn--tip {
-  margin-top: 0;
-  min-height: 48px;
-  padding: 14px 24px;
-  font-size: 17px;
+.tip__title .btn--tip {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  min-height: 0;
+  padding: 0.28em 0.55em;
+  font-size: 0.72em;
   font-weight: 700;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1;
+  gap: 0.4em;
+}
+
+.tip__title .btn--tip img {
+  width: 0.75em;
+  height: auto;
 }
 
 .tip__visual {
@@ -2037,13 +2062,23 @@ section[data-reveal].is-visible > .shell {
 @media (max-width: 900px) {
   .hero__top {
     grid-template-columns: 1fr;
-    justify-items: start;
+    justify-items: stretch;
+  }
+
+  .hero__title {
+    justify-self: start;
   }
 
   .hero__network {
-    justify-self: end;
-    height: clamp(9rem, 36vw, 13rem);
-    max-width: min(60%, 280px);
+    justify-self: center;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
+    margin-right: 0;
+    transform: none;
   }
 
   .header__inner {
@@ -2060,6 +2095,18 @@ section[data-reveal].is-visible > .shell {
 
   .header__actions .btn--header-cta {
     display: none;
+  }
+
+  /* Center header search panel in the viewport (not right-anchored to the icon) */
+  .header-search {
+    position: static;
+  }
+
+  .header-search__overlay {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(360px, calc(100vw - 2 * var(--page-pad)));
   }
 
   .mobile-nav:not([hidden]) {
@@ -2103,6 +2150,9 @@ section[data-reveal].is-visible > .shell {
   .about__media {
     justify-self: stretch;
     max-width: none;
+    aspect-ratio: 693 / 520;
+    min-height: 320px;
+    padding: clamp(1.75rem, 6vw, 2.5rem) clamp(1.25rem, 4vw, 2rem);
   }
 
   .service-grid {
@@ -2119,16 +2169,37 @@ section[data-reveal].is-visible > .shell {
     padding: 36px var(--tip-band-pad) 0;
   }
 
+  .tip__title {
+    font-size: clamp(1.85rem, 7.5vw, 2.35rem);
+  }
+
+  .tip__title-line {
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+
+  .tip__title .btn--tip {
+    white-space: nowrap;
+    font-size: 0.78em;
+    padding: 0.32em 0.62em;
+    gap: 0.4em;
+  }
+
   .tip__visual {
-    justify-content: center;
-    width: min(480px, 100%);
+    justify-content: flex-end;
+    align-self: stretch;
+    width: 100%;
     height: auto;
-    margin: 28px auto 0;
+    margin: 28px 0 0;
+    margin-right: calc(-1 * var(--tip-band-pad));
+    margin-left: auto;
   }
 
   .tip__illustration {
-    width: 100%;
+    width: min(100%, 420px);
+    max-width: none;
     max-height: none;
+    margin-left: auto;
   }
 
   .reports__grid {
@@ -2145,18 +2216,37 @@ section[data-reveal].is-visible > .shell {
     padding: 2rem 1.5rem;
   }
 
+  .newsletter__copy {
+    max-width: none;
+    width: 100%;
+  }
+
+  .newsletter__copy > p {
+    max-width: none;
+  }
+
   .newsletter__form {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
-    padding: 16px;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    padding: 0;
     background: transparent;
   }
 
   .newsletter__form input {
+    width: 100%;
     min-height: 48px;
     padding: 0 16px;
     background: var(--orange-deep);
+    box-sizing: border-box;
+  }
+
+  .newsletter__form .btn {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .footer__bottom {
@@ -2214,5 +2304,86 @@ section[data-reveal].is-visible > .shell {
   .tip__band {
     --tip-band-pad: 20px;
     padding: 32px var(--tip-band-pad) 0;
+  }
+
+  .tip__title {
+    font-size: clamp(1.85rem, 8vw, 2.25rem);
+    line-height: 1.35;
+  }
+
+  .tip__title .btn--tip {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    font-size: 0.78em;
+    padding: 0.34em 0.65em;
+    gap: 0.4em;
+  }
+
+  .tip__title .btn--tip img {
+    width: 0.8em;
+  }
+
+  .fc-card__meta {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .fc-card__time {
+    order: 0;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .fc-card__tags {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .fc-card__tags .badge {
+    font-size: 12px;
+    padding: 0 7px;
+  }
+
+  .btn {
+    padding: 12px 14px;
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .btn img {
+    width: 18px;
+    height: 7px;
+  }
+
+  .btn--hero-cta {
+    margin-top: 28px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .btn--reports {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .btn--header-cta {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .newsletter__form .btn {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .rp-load-more,
+  .fc-load-more {
+    padding: 12px 14px;
+    font-size: 14px;
+    min-height: 0;
   }
 }

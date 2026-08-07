@@ -6,6 +6,11 @@
   color: var(--navy);
 }
 
+.reports-page .site-header {
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(0, 29, 43, 0.08);
+}
+
 .reports-page .logo img {
   filter: none;
 }
@@ -20,6 +25,16 @@
 
 .reports-page .header__nav {
   background: var(--navy);
+}
+
+.reports-page .header-search__icon {
+  filter: none;
+}
+
+.reports-page .header-search__toggle:hover .header-search__icon,
+.reports-page .header-search__toggle:focus-visible .header-search__icon {
+  filter: brightness(0) saturate(100%) invert(62%) sepia(84%) saturate(2148%)
+    hue-rotate(360deg) brightness(103%) contrast(104%);
 }
 
 .rp-hub {
@@ -253,9 +268,20 @@
     align-items: stretch;
   }
 
+  .rp-filters {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    padding-bottom: 2px;
+  }
+
   .rp-search {
     margin-left: 0;
     width: 100%;
+    flex: 0 0 auto;
+    max-width: none;
   }
 
   .rp-hub__grid {
@@ -263,6 +289,7 @@
   }
 
   .rp-filters__btn {
+    flex: 0 0 auto;
     min-height: 34px;
     font-size: 13px;
   }
@@ -272,12 +299,24 @@
     height: 44px;
     font-size: 14px;
   }
+
+  .rp-load-more {
+    padding: 12px 14px;
+    font-size: 14px;
+    min-height: 0;
+    width: auto;
+  }
 }
 
 /* —— Report article (AngelList Link–inspired layout) —— */
 
 .report-article-page {
   background: var(--white);
+}
+
+.report-article-page .site-header {
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(0, 29, 43, 0.08);
 }
 
 .report-article-page .logo img {
@@ -294,6 +333,16 @@
 
 .report-article-page .header__nav {
   background: var(--navy);
+}
+
+.report-article-page .header-search__icon {
+  filter: none;
+}
+
+.report-article-page .header-search__toggle:hover .header-search__icon,
+.report-article-page .header-search__toggle:focus-visible .header-search__icon {
+  filter: brightness(0) saturate(100%) invert(62%) sepia(84%) saturate(2148%)
+    hue-rotate(360deg) brightness(103%) contrast(104%);
 }
 
 .ra {
@@ -783,8 +832,27 @@
     grid-template-columns: 1fr;
   }
 
+  .ra__related-head .btn--reports {
+    padding: 12px 14px;
+    font-size: 14px;
+    width: auto;
+    min-height: 0;
+    white-space: nowrap;
+  }
+
+  .ra__title {
+    font-size: clamp(1.65rem, 7vw, 2.25rem);
+  }
+
   .ra__body {
     font-size: 16px;
+  }
+
+  .rp-load-more {
+    padding: 12px 14px;
+    font-size: 14px;
+    min-height: 0;
+    width: auto;
   }
 
   .ra__share-toast {

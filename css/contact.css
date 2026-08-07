@@ -293,6 +293,10 @@
     color: var(--white);
   }
 
+  .contact-hero__line {
+    white-space: normal;
+  }
+
   .contact-form__row {
     grid-template-columns: 1fr;
   }

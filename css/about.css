@@ -27,13 +27,13 @@ body.about-page {
 .about-hero__title {
   margin: 0;
   font-family: "Open Sans", system-ui, sans-serif;
-  font-size: clamp(1.5rem, 3.6vw, 42px);
+  font-size: clamp(2rem, 4vw, 54px);
   font-weight: 600;
-  font-stretch: 100%;
-  font-variation-settings: "wdth" 100;
-  line-height: 1.22;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.15;
   letter-spacing: -0.01em;
-  color: var(--orange);
+  color: var(--white);
   text-wrap: pretty;
 }
 
@@ -56,13 +56,15 @@ body.about-page {
 .about-hero__tagline {
   margin-top: clamp(0.35rem, 1vw, 0.75rem);
   max-width: none;
-  font-size: clamp(1.65rem, 3.2vw, 2.5rem);
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
   font-weight: 700;
+  font-style: normal;
   font-stretch: 75%;
   font-variation-settings: "wdth" 75;
   line-height: 1.15;
   letter-spacing: -0.01em;
-  color: var(--white);
+  color: var(--orange);
 }
 
 .about-hero__stage .hero__rule {
@@ -384,6 +386,19 @@ body.about-page {
 @media (max-width: 600px) {
   .about-hero {
     padding: clamp(5.75rem, 18vw, 7.25rem) 0 0;
+  }
+
+  .about-hero__title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  .about-hero__text {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .about-hero__tagline {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
   }
 
   .about-cards {
