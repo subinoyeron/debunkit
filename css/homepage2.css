@@ -27,6 +27,8 @@
   --page-pad: 48px;
   --shell-max: 1416px;
   --shell: min(var(--shell-max), calc(100% - var(--page-pad) * 2));
+  /* Shared tip + newsletter left text inset */
+  --band-inline-pad: clamp(1.5rem, 4vw, 65px);
   --grid-gap: 32px;
   --card-w: 333px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -1394,7 +1396,7 @@ ul {
 
 .tip__band {
   --tip-band-h: 420px;
-  --tip-band-pad: 40px;
+  --tip-band-pad: var(--band-inline-pad);
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
@@ -1612,7 +1614,7 @@ ul {
   min-height: 0;
   display: grid;
   align-items: center;
-  padding: clamp(2.5rem, 4.5vw, 3.25rem) clamp(1.5rem, 4vw, 65px);
+  padding: clamp(2.5rem, 4.5vw, 3.25rem) var(--band-inline-pad);
   background: var(--orange);
   color: var(--white);
   border-radius: 0;
@@ -2049,7 +2051,6 @@ section[data-reveal].is-visible > .shell {
 
   .tip__band {
     --tip-band-h: 360px;
-    --tip-band-pad: 32px;
     grid-template-columns: 1fr 0.85fr;
   }
 
@@ -2060,6 +2061,10 @@ section[data-reveal].is-visible > .shell {
 }
 
 @media (max-width: 900px) {
+  :root {
+    --band-inline-pad: 1.5rem;
+  }
+
   .hero__top {
     grid-template-columns: 1fr;
     justify-items: stretch;
@@ -2161,7 +2166,7 @@ section[data-reveal].is-visible > .shell {
 
   .tip__band {
     --tip-band-h: none;
-    --tip-band-pad: 28px;
+    --tip-band-pad: var(--band-inline-pad);
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
     height: auto;
@@ -2213,7 +2218,7 @@ section[data-reveal].is-visible > .shell {
 
   .newsletter__panel {
     min-height: 0;
-    padding: 2rem 1.5rem;
+    padding: 2rem var(--band-inline-pad);
   }
 
   .newsletter__copy {
@@ -2302,7 +2307,6 @@ section[data-reveal].is-visible > .shell {
   }
 
   .tip__band {
-    --tip-band-pad: 20px;
     padding: 32px var(--tip-band-pad) 0;
   }
 
