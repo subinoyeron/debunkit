@@ -614,59 +614,6 @@
   color: var(--navy);
 }
 
-.fcs__sources {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin: 14px 0 0;
-  font-size: 13px;
-  line-height: 1;
-  color: #8a939e;
-}
-
-.fcs__sources-label {
-  font-weight: 500;
-  margin-right: 2px;
-  color: #8a939e;
-}
-
-.fcs__source-sep {
-  display: none;
-}
-
-.fcs__source-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border-radius: 2px;
-  background: var(--orange);
-  color: var(--navy);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1;
-  text-decoration: none;
-  transition:
-    background var(--duration) var(--ease),
-    color var(--duration) var(--ease);
-}
-
-.fcs__source-link:hover,
-.fcs__source-link:focus-visible {
-  background: var(--navy);
-  color: var(--white);
-  outline: none;
-}
-
-.fcs__source-link:focus-visible {
-  outline: 2px solid var(--navy);
-  outline-offset: 2px;
-}
-
 .fcs__debunk-btn {
   display: inline-flex;
   align-items: center;
