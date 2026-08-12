@@ -392,13 +392,7 @@ ul {
 .logo img {
   width: 148px;
   height: auto;
-  /* Solid white wordmark over navy hero */
-  filter: brightness(0) invert(1);
-  transition: filter var(--duration) var(--ease);
-}
-
-.site-header.is-scrolled .logo img {
-  filter: none;
+  transition: opacity var(--duration) var(--ease);
 }
 
 .logo__fallback {
@@ -1795,9 +1789,9 @@ ul {
 
 .footer__brand img {
   display: block;
-  height: 28px;
-  width: auto;
-  filter: brightness(0) invert(1);
+  width: 168px;
+  height: auto;
+  max-width: 100%;
 }
 
 .footer__tagline {

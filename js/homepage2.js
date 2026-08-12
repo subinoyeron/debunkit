@@ -70,12 +70,22 @@
     });
   }
 
+  const updateLogo = () => {
+    if (!logoImage?.dataset.logoColor || !logoImage?.dataset.logoWhite || !header) return;
+    const useWhite = Boolean(hero) && !header.classList.contains("is-scrolled");
+    const next = useWhite ? logoImage.dataset.logoWhite : logoImage.dataset.logoColor;
+    if (logoImage.getAttribute("src") !== next) {
+      logoImage.setAttribute("src", next);
+    }
+  };
+
   const setScrolled = () => {
     if (!header) return;
     const threshold = hero
       ? Math.max(24, Math.min(hero.offsetHeight * 0.55, 420))
       : 4;
     header.classList.toggle("is-scrolled", window.scrollY > threshold);
+    updateLogo();
   };
 
   setScrolled();
