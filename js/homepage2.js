@@ -870,4 +870,107 @@
     loadMoreSel: "[data-report-load-more]",
     titleSel: ".report-card__title",
   });
+
+  const newsletterModal = document.querySelector("[data-newsletter-modal]");
+  if (newsletterModal) {
+    const STORAGE_KEY = "debunkit-newsletter-popup";
+    const modalForm = newsletterModal.querySelector("[data-newsletter-modal-form]");
+    const modalFirst = newsletterModal.querySelector("#newsletter-modal-first");
+    const modalLast = newsletterModal.querySelector("#newsletter-modal-last");
+    const modalEmail = newsletterModal.querySelector("#newsletter-modal-email");
+    const modalNote = newsletterModal.querySelector("[data-form-note]");
+    const modalInputs = [modalFirst, modalLast, modalEmail].filter(Boolean);
+    const closeButtons = newsletterModal.querySelectorAll(
+      "[data-newsletter-modal-close], [data-newsletter-modal-dismiss]"
+    );
+    const backdrop = newsletterModal.querySelector("[data-newsletter-modal-backdrop]");
+    const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    let showTimer;
+
+    const hasSeenModal = () => {
+      try {
+        return Boolean(localStorage.getItem(STORAGE_KEY));
+      } catch {
+        return false;
+      }
+    };
+
+    const rememberModal = (status) => {
+      try {
+        localStorage.setItem(STORAGE_KEY, status);
+      } catch {
+        /* ignore storage errors */
+      }
+    };
+
+    const openModal = () => {
+      if (!newsletterModal.hidden) return;
+      newsletterModal.hidden = false;
+      document.body.classList.add("is-modal-open");
+      window.setTimeout(() => modalFirst?.focus(), 50);
+    };
+
+    const closeModal = (status = "dismissed") => {
+      if (newsletterModal.hidden) return;
+      newsletterModal.hidden = true;
+      document.body.classList.remove("is-modal-open");
+      rememberModal(status);
+      window.clearTimeout(showTimer);
+    };
+
+    if (!hasSeenModal()) {
+      showTimer = window.setTimeout(openModal, 4000);
+    }
+
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", () => closeModal("dismissed"));
+    });
+
+    backdrop?.addEventListener("click", () => closeModal("dismissed"));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !newsletterModal.hidden) {
+        closeModal("dismissed");
+      }
+    });
+
+    modalForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      modalNote?.classList.remove("is-success", "is-error");
+      modalInputs.forEach((input) => input.classList.remove("is-invalid"));
+
+      const firstName = modalFirst?.value.trim() ?? "";
+      const lastName = modalLast?.value.trim() ?? "";
+      const email = modalEmail?.value.trim() ?? "";
+
+      if (!firstName) {
+        modalFirst?.classList.add("is-invalid");
+        modalNote?.classList.add("is-error");
+        if (modalNote) modalNote.textContent = "Enter your first name.";
+        modalFirst?.focus();
+        return;
+      }
+
+      if (!lastName) {
+        modalLast?.classList.add("is-invalid");
+        modalNote?.classList.add("is-error");
+        if (modalNote) modalNote.textContent = "Enter your last name.";
+        modalLast?.focus();
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        modalEmail?.classList.add("is-invalid");
+        modalNote?.classList.add("is-error");
+        if (modalNote) modalNote.textContent = "Enter a valid email to subscribe.";
+        modalEmail?.focus();
+        return;
+      }
+
+      modalNote?.classList.add("is-success");
+      if (modalNote) modalNote.textContent = "You're subscribed. Watch your inbox.";
+      modalForm.reset();
+      window.setTimeout(() => closeModal("subscribed"), 1200);
+    });
+  }
 })();

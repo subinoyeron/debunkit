@@ -734,6 +734,107 @@
       </div>
     </footer>
 
+    <div class="newsletter-modal" data-newsletter-modal hidden>
+      <div
+        class="newsletter-modal__backdrop"
+        data-newsletter-modal-backdrop
+        aria-hidden="true"
+      ></div>
+      <div class="newsletter-modal__wrap">
+        <div
+          class="newsletter-modal__dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="newsletter-modal-title"
+          aria-describedby="newsletter-modal-desc"
+        >
+          <div class="newsletter-modal__panel">
+            <button
+              class="newsletter-modal__close"
+              type="button"
+              data-newsletter-modal-close
+              aria-label="Close newsletter signup"
+            >
+              <img
+                src="jinishpotro/closeicon.svg"
+                alt=""
+                width="14"
+                height="14"
+              />
+            </button>
+
+            <h2 id="newsletter-modal-title" class="newsletter-modal__title">
+              Stay Ahead of the Lies
+            </h2>
+            <p id="newsletter-modal-desc" class="newsletter-modal__text">
+              Get DebunkIt&rsquo;s latest fact checks, reporting, and updates on harmful
+              and misleading narratives<br />
+              delivered straight to your inbox.
+            </p>
+
+            <form class="newsletter-modal__form" data-newsletter-modal-form novalidate>
+              <div class="newsletter-modal__row">
+                <div class="newsletter-modal__field">
+                  <label for="newsletter-modal-first">First Name</label>
+                  <input
+                    id="newsletter-modal-first"
+                    name="first_name"
+                    type="text"
+                    autocomplete="given-name"
+                    placeholder="First Name"
+                    required
+                  />
+                </div>
+                <div class="newsletter-modal__field">
+                  <label for="newsletter-modal-last">Last Name</label>
+                  <input
+                    id="newsletter-modal-last"
+                    name="last_name"
+                    type="text"
+                    autocomplete="family-name"
+                    placeholder="Last Name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="newsletter-modal__field">
+                <label for="newsletter-modal-email">Email</label>
+                <input
+                  id="newsletter-modal-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+
+              <div class="newsletter-modal__actions">
+                <button class="btn newsletter-modal__submit" type="submit">
+                  Let&rsquo;s DebunkIt
+                  <img
+                    src="images/homepage2/arrow-orange.svg"
+                    alt=""
+                    width="22"
+                    height="8"
+                  />
+                </button>
+                <p class="form-note" data-form-note role="status" aria-live="polite"></p>
+                <button
+                  class="newsletter-modal__dismiss"
+                  type="button"
+                  data-newsletter-modal-dismiss
+                >
+                  No thanks, I&rsquo;m not interested!
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="js/homepage2.js" defer></script>
   </body>
 </html>
