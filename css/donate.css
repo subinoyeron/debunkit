@@ -1,0 +1,213 @@
+/* Donate page — matches submit/contact form layout */
+
+.donate-page {
+  background: var(--navy);
+}
+
+.donate-page .site-header {
+  background: transparent;
+  box-shadow: none;
+}
+
+.donate-page .logo img {
+  filter: none;
+}
+
+.donate-page .logo__fallback {
+  color: var(--white);
+}
+
+.donate-page .logo__fallback span {
+  color: var(--orange);
+}
+
+.donate-page .menu-toggle span {
+  background: var(--white);
+}
+
+.donate-page .site-header.is-scrolled {
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(0, 29, 43, 0.08);
+}
+
+.donate-page .site-header.is-scrolled .logo img {
+  filter: none;
+}
+
+.donate-page .site-header.is-scrolled .menu-toggle span {
+  background: var(--navy);
+}
+
+.donate-main {
+  --donate-grid-line: rgba(220, 241, 255, 0.09);
+  --donate-grid-dot: rgba(255, 243, 220, 0.14);
+  --donate-grid-size: 96px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(6.5rem, 12vw, 8.5rem) 0 clamp(4rem, 8vw, 5.5rem);
+}
+
+.donate-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      circle 1.25px at 50% 50%,
+      var(--donate-grid-dot) 0%,
+      var(--donate-grid-dot) 99%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      to right,
+      var(--donate-grid-line) 0,
+      var(--donate-grid-line) 1px,
+      transparent 1px,
+      transparent var(--donate-grid-size)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--donate-grid-line) 0,
+      var(--donate-grid-line) 1px,
+      transparent 1px,
+      transparent var(--donate-grid-size)
+    );
+  background-size:
+    var(--donate-grid-size) var(--donate-grid-size),
+    auto,
+    auto;
+  background-position:
+    calc(var(--donate-grid-size) / -2 + 0.5px)
+      calc(var(--donate-grid-size) / -2 + 0.5px),
+    0 0,
+    0 0;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 55%,
+    rgba(0, 0, 0, 0.55) 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 55%,
+    rgba(0, 0, 0, 0.55) 78%,
+    transparent 100%
+  );
+}
+
+.donate-main > .shell {
+  position: relative;
+  z-index: 1;
+}
+
+.donate-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(21rem, 27rem);
+  gap: clamp(2rem, 3vw, 3rem);
+  align-items: start;
+  width: min(100%, 72rem);
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.donate-hero {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: left;
+}
+
+.donate-hero__title {
+  margin: 0 0 clamp(1rem, 2vw, 1.25rem);
+  max-width: none;
+  font-size: clamp(1.65rem, 3.4vw, 48px);
+  font-weight: 600;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.2;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+.donate-hero__lead {
+  margin: 0;
+  max-width: none;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-weight: 400;
+  font-stretch: 100%;
+  font-variation-settings: "wdth" 100;
+  line-height: 1.65;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.82);
+  text-wrap: pretty;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.donate-hero__lead + .donate-hero__lead {
+  margin-top: clamp(0.9rem, 1.5vw, 1.1rem);
+}
+
+.donate-panel {
+  width: 100%;
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: var(--white);
+  border-radius: 10px;
+}
+
+.donate-widget {
+  min-width: 0;
+}
+
+.donate-widget dbox-widget {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .donate-layout {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: none;
+    gap: clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+
+  .donate-panel {
+    max-width: 28rem;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .donate-main {
+    --donate-grid-size: 72px;
+    padding: clamp(5.75rem, 18vw, 7rem) 0 clamp(3rem, 10vw, 4rem);
+  }
+
+  .donate-hero__title {
+    max-width: none;
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    color: var(--white);
+  }
+
+  .donate-hero__lead {
+    max-width: none;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .donate-panel {
+    max-width: none;
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+}
