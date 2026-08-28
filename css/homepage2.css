@@ -2411,7 +2411,7 @@ section[data-reveal].is-visible > .shell {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  width: min(100%, 36rem);
+  width: min(100%, 28rem);
 }
 
 .newsletter-modal__dialog {
@@ -2426,8 +2426,8 @@ section[data-reveal].is-visible > .shell {
   z-index: 2;
   display: grid;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 1.875rem;
+  height: 1.875rem;
   padding: 0;
   border: 0;
   border-radius: 2px;
@@ -2439,8 +2439,8 @@ section[data-reveal].is-visible > .shell {
 
 .newsletter-modal__close img {
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   filter: brightness(0);
 }
 
@@ -2464,7 +2464,7 @@ section[data-reveal].is-visible > .shell {
 }
 
 .newsletter-modal__title {
-  margin: 0 0 clamp(0.85rem, 2vw, 1.1rem);
+  margin: clamp(0.5rem, 1.5vw, 0.85rem) 0 clamp(0.85rem, 2vw, 1.1rem);
   font-size: clamp(1.65rem, 4vw, 2.5rem);
   font-weight: 600;
   font-stretch: 75%;
@@ -2476,7 +2476,7 @@ section[data-reveal].is-visible > .shell {
 
 .newsletter-modal__text {
   margin: 0 auto clamp(1.75rem, 3.5vw, 2.25rem);
-  max-width: 30rem;
+  max-width: 24rem;
   font-size: clamp(0.95rem, 1.6vw, 1rem);
   font-weight: 400;
   line-height: 1.55;
@@ -2491,12 +2491,6 @@ section[data-reveal].is-visible > .shell {
   width: 100%;
   text-align: left;
   margin-top: 0.15rem;
-}
-
-.newsletter-modal__row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.85rem;
 }
 
 .newsletter-modal__field {
@@ -2582,7 +2576,7 @@ section[data-reveal].is-visible > .shell {
 
 .newsletter-modal__form .form-note {
   margin: 0;
-  min-height: 1.25em;
+  min-height: 0;
   font-size: 14px;
   line-height: 1.35;
   color: rgba(0, 29, 43, 0.62);
@@ -2597,45 +2591,24 @@ section[data-reveal].is-visible > .shell {
   color: var(--fake);
 }
 
-.newsletter-modal__dismiss {
-  padding: 0.15rem 0.5rem 0;
-  border: 0;
-  background: none;
-  color: rgba(0, 29, 43, 0.55);
-  font: inherit;
-  font-size: 14px;
-  line-height: 1.4;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color var(--duration) var(--ease);
-}
-
-.newsletter-modal__dismiss:hover,
-.newsletter-modal__dismiss:focus-visible {
-  color: var(--navy);
-}
-
-.newsletter-modal__dismiss:focus-visible {
-  outline: 2px solid var(--orange);
-  outline-offset: 3px;
-}
-
 body.is-modal-open {
   overflow: hidden;
 }
 
 @media (max-width: 600px) {
   .newsletter-modal__panel {
-    padding: 1.75rem 1.25rem 1.5rem;
+    padding: 1.75rem 1.25rem 1.25rem;
   }
 
   .newsletter-modal__close {
     top: 0.85rem;
     right: 0.85rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 
-  .newsletter-modal__row {
-    grid-template-columns: 1fr;
+  .newsletter-modal__close img {
+    width: 11px;
+    height: 11px;
   }
 }

@@ -875,14 +875,9 @@
   if (newsletterModal) {
     const STORAGE_KEY = "debunkit-newsletter-popup";
     const modalForm = newsletterModal.querySelector("[data-newsletter-modal-form]");
-    const modalFirst = newsletterModal.querySelector("#newsletter-modal-first");
-    const modalLast = newsletterModal.querySelector("#newsletter-modal-last");
     const modalEmail = newsletterModal.querySelector("#newsletter-modal-email");
     const modalNote = newsletterModal.querySelector("[data-form-note]");
-    const modalInputs = [modalFirst, modalLast, modalEmail].filter(Boolean);
-    const closeButtons = newsletterModal.querySelectorAll(
-      "[data-newsletter-modal-close], [data-newsletter-modal-dismiss]"
-    );
+    const closeButton = newsletterModal.querySelector("[data-newsletter-modal-close]");
     const backdrop = newsletterModal.querySelector("[data-newsletter-modal-backdrop]");
     const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     let showTimer;
@@ -907,7 +902,7 @@
       if (!newsletterModal.hidden) return;
       newsletterModal.hidden = false;
       document.body.classList.add("is-modal-open");
-      window.setTimeout(() => modalFirst?.focus(), 50);
+      window.setTimeout(() => modalEmail?.focus(), 50);
     };
 
     const closeModal = (status = "dismissed") => {
@@ -922,9 +917,7 @@
       showTimer = window.setTimeout(openModal, 4000);
     }
 
-    closeButtons.forEach((button) => {
-      button.addEventListener("click", () => closeModal("dismissed"));
-    });
+    closeButton?.addEventListener("click", () => closeModal("dismissed"));
 
     backdrop?.addEventListener("click", () => closeModal("dismissed"));
 
@@ -937,28 +930,9 @@
     modalForm?.addEventListener("submit", (event) => {
       event.preventDefault();
       modalNote?.classList.remove("is-success", "is-error");
-      modalInputs.forEach((input) => input.classList.remove("is-invalid"));
+      modalEmail?.classList.remove("is-invalid");
 
-      const firstName = modalFirst?.value.trim() ?? "";
-      const lastName = modalLast?.value.trim() ?? "";
       const email = modalEmail?.value.trim() ?? "";
-
-      if (!firstName) {
-        modalFirst?.classList.add("is-invalid");
-        modalNote?.classList.add("is-error");
-        if (modalNote) modalNote.textContent = "Enter your first name.";
-        modalFirst?.focus();
-        return;
-      }
-
-      if (!lastName) {
-        modalLast?.classList.add("is-invalid");
-        modalNote?.classList.add("is-error");
-        if (modalNote) modalNote.textContent = "Enter your last name.";
-        modalLast?.focus();
-        return;
-      }
-
       if (!isValidEmail(email)) {
         modalEmail?.classList.add("is-invalid");
         modalNote?.classList.add("is-error");
