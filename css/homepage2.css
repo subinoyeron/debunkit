@@ -2470,7 +2470,7 @@ section[data-reveal].is-visible > .shell {
   font-stretch: 75%;
   font-variation-settings: "wdth" 75;
   line-height: 1.15;
-  color: var(--navy);
+  color: var(--orange);
   text-wrap: balance;
 }
 
