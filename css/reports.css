@@ -50,12 +50,14 @@
 
 .rp-hub__title {
   margin: 0;
-  font-size: clamp(2.25rem, 4.5vw, 56px);
+  font-size: clamp(2rem, 4vw, 54px);
   font-weight: 600;
   font-stretch: 75%;
   font-variation-settings: "wdth" 75;
-  line-height: 1.1;
+  line-height: 1.15;
   color: var(--navy);
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
 }
 
 .rp-hub__toolbar {
