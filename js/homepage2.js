@@ -70,10 +70,24 @@
     });
   }
 
+  const darkHeaderBodyClasses = [
+    "donate-page",
+    "submit-page",
+    "contact-page",
+    "training-page",
+    "search-page",
+    "factchecks-page",
+  ];
+
+  const usesLightLogo = () => {
+    if (!header || header.classList.contains("is-scrolled")) return false;
+    if (hero) return true;
+    return darkHeaderBodyClasses.some((cls) => document.body.classList.contains(cls));
+  };
+
   const updateLogo = () => {
     if (!logoImage?.dataset.logoColor || !logoImage?.dataset.logoWhite || !header) return;
-    const useWhite = Boolean(hero) && !header.classList.contains("is-scrolled");
-    const next = useWhite ? logoImage.dataset.logoWhite : logoImage.dataset.logoColor;
+    const next = usesLightLogo() ? logoImage.dataset.logoWhite : logoImage.dataset.logoColor;
     if (logoImage.getAttribute("src") !== next) {
       logoImage.setAttribute("src", next);
     }
