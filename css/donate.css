@@ -79,9 +79,9 @@
   margin: 0 0 clamp(0.65rem, 1.25vw, 0.85rem);
   max-width: none;
   font-size: clamp(2rem, 4.2vw, 64px);
-  font-weight: 600;
+  font-weight: 650;
   font-stretch: 75%;
-  font-variation-settings: "wdth" 75;
+  font-variation-settings: "wdth" 75, "wght" 650;
   line-height: 1.15;
   color: var(--navy);
   text-wrap: balance;
