@@ -1,12 +1,13 @@
-/* Donate page — matches submit/contact form layout */
+/* Donate page — white surface layout */
 
 .donate-page {
-  background: var(--navy);
+  background: var(--white);
+  color: var(--navy);
 }
 
 .donate-page .site-header {
-  background: transparent;
-  box-shadow: none;
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(0, 29, 43, 0.08);
 }
 
 .donate-page .logo img {
@@ -14,7 +15,7 @@
 }
 
 .donate-page .logo__fallback {
-  color: var(--white);
+  color: var(--navy);
 }
 
 .donate-page .logo__fallback span {
@@ -22,93 +23,31 @@
 }
 
 .donate-page .menu-toggle span {
-  background: var(--white);
-}
-
-.donate-page .site-header.is-scrolled {
-  background: #ffffff;
-  box-shadow: 0 1px 0 rgba(0, 29, 43, 0.08);
-}
-
-.donate-page .site-header.is-scrolled .logo img {
-  filter: none;
-}
-
-.donate-page .site-header.is-scrolled .menu-toggle span {
   background: var(--navy);
 }
 
+.donate-page .header__nav {
+  background: var(--navy);
+}
+
+.donate-page .header-search__icon {
+  filter: none;
+}
+
+.donate-page .header-search__toggle:hover .header-search__icon,
+.donate-page .header-search__toggle:focus-visible .header-search__icon {
+  filter: brightness(0) saturate(100%) invert(62%) sepia(84%) saturate(2148%)
+    hue-rotate(360deg) brightness(103%) contrast(104%);
+}
+
 .donate-main {
-  --donate-grid-line: rgba(220, 241, 255, 0.09);
-  --donate-grid-dot: rgba(255, 243, 220, 0.14);
-  --donate-grid-size: 96px;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   padding: clamp(6.5rem, 12vw, 8.5rem) 0 clamp(4rem, 8vw, 5.5rem);
-}
-
-.donate-main::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(
-      circle 1.25px at 50% 50%,
-      var(--donate-grid-dot) 0%,
-      var(--donate-grid-dot) 99%,
-      transparent 100%
-    ),
-    repeating-linear-gradient(
-      to right,
-      var(--donate-grid-line) 0,
-      var(--donate-grid-line) 1px,
-      transparent 1px,
-      transparent var(--donate-grid-size)
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      var(--donate-grid-line) 0,
-      var(--donate-grid-line) 1px,
-      transparent 1px,
-      transparent var(--donate-grid-size)
-    );
-  background-size:
-    var(--donate-grid-size) var(--donate-grid-size),
-    auto,
-    auto;
-  background-position:
-    calc(var(--donate-grid-size) / -2 + 0.5px)
-      calc(var(--donate-grid-size) / -2 + 0.5px),
-    0 0,
-    0 0;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 55%,
-    rgba(0, 0, 0, 0.55) 78%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 55%,
-    rgba(0, 0, 0, 0.55) 78%,
-    transparent 100%
-  );
-}
-
-.donate-main > .shell {
-  position: relative;
-  z-index: 1;
 }
 
 .donate-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(21rem, 27rem);
-  gap: clamp(2rem, 3vw, 3rem);
+  column-gap: clamp(2rem, 3vw, 3rem);
   align-items: start;
   width: min(100%, 72rem);
   max-width: 72rem;
@@ -117,6 +56,13 @@
 }
 
 .donate-layout > * {
+  min-width: 0;
+}
+
+.donate-layout__copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.25rem, 4.5vw, 3.25rem);
   min-width: 0;
 }
 
@@ -130,14 +76,14 @@
 }
 
 .donate-hero__title {
-  margin: 0 0 clamp(1rem, 2vw, 1.25rem);
+  margin: 0 0 clamp(0.65rem, 1.25vw, 0.85rem);
   max-width: none;
-  font-size: clamp(1.65rem, 3.4vw, 48px);
+  font-size: clamp(2rem, 4.2vw, 64px);
   font-weight: 600;
   font-stretch: 75%;
   font-variation-settings: "wdth" 75;
-  line-height: 1.2;
-  color: var(--white);
+  line-height: 1.15;
+  color: var(--navy);
   text-wrap: balance;
 }
 
@@ -150,7 +96,7 @@
   font-variation-settings: "wdth" 100;
   line-height: 1.65;
   letter-spacing: 0;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(0, 29, 43, 0.82);
   text-wrap: pretty;
   hyphens: none;
   -webkit-hyphens: none;
@@ -161,19 +107,58 @@
   margin-top: clamp(0.9rem, 1.5vw, 1.1rem);
 }
 
-.donate-hero__lead--monthly-after {
-  display: none;
+.donate-monthly {
+  margin-top: 0;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: var(--orange);
 }
 
 .donate-panel {
+  align-self: start;
   width: 100%;
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
   padding: clamp(1.25rem, 2.5vw, 1.75rem);
-  background: var(--white);
-  border-radius: 10px;
+  background: color-mix(in srgb, var(--pale) 28%, var(--white));
+  border: 2px solid var(--orange);
+  border-radius: 0;
   overflow: hidden;
+}
+
+.donate-monthly__inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.donate-monthly__image {
+  flex-shrink: 0;
+  width: clamp(4.5rem, 12vw, 6rem);
+  height: auto;
+  display: block;
+}
+
+.donate-monthly__copy {
+  min-width: 0;
+}
+
+.donate-monthly__title {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.15;
+  color: var(--white);
+}
+
+.donate-monthly__text {
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--navy);
 }
 
 .donate-widget {
@@ -194,33 +179,76 @@
     grid-template-columns: 1fr;
     width: var(--shell);
     max-width: var(--shell-max);
-    gap: clamp(1.75rem, 3.5vw, 2.5rem);
+    row-gap: clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+
+  .donate-layout__copy {
+    display: contents;
+  }
+
+  .donate-hero {
+    grid-row: 1;
   }
 
   .donate-panel {
+    grid-row: 2;
     max-width: none;
     margin-inline: 0;
+  }
+
+  .donate-monthly {
+    grid-row: 3;
+    margin-top: 0;
+    padding: 36px 20px;
+    height: auto;
+    min-height: 0;
+  }
+
+  .donate-monthly__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .donate-monthly__image {
+    width: clamp(75px, 18vw, 85px);
+    height: auto;
+    max-height: 85px;
+  }
+
+  .donate-monthly__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .donate-monthly__title {
+    margin: 0;
+    font-size: clamp(1.375rem, 5.5vw, 1.625rem);
+  }
+
+  .donate-monthly__text {
+    margin: 0;
+    max-width: 100%;
+    font-size: clamp(1rem, 4.2vw, 1.125rem);
+    line-height: 1.5;
   }
 }
 
 @media (max-width: 600px) {
   .donate-main {
-    --donate-grid-size: calc((100vw - (var(--page-pad) * 2)) / 6);
     padding: clamp(5.75rem, 18vw, 7rem) 0 clamp(3rem, 10vw, 4rem);
-  }
-
-  .donate-main::before {
-    background-position:
-      calc(var(--page-pad) + var(--donate-grid-size) / -2 + 0.5px)
-        calc(var(--donate-grid-size) / -2 + 0.5px),
-      var(--page-pad) 0,
-      var(--page-pad) 0;
   }
 
   .donate-hero__title {
     max-width: none;
-    font-size: clamp(1.5rem, 7vw, 2rem);
-    color: var(--white);
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+    color: var(--navy);
   }
 
   .donate-hero__lead {
@@ -236,15 +264,6 @@
     margin-inline: 0;
     padding: 1rem;
   }
-
-  .donate-hero__lead--monthly-in-hero {
-    display: none;
-  }
-
-  .donate-hero__lead--monthly-after {
-    display: block;
-    margin-top: 0;
-  }
 }
 
 /* What your gift powers */
@@ -253,8 +272,13 @@
 }
 
 .donate-powers__panel {
-  padding: clamp(3.5rem, 7vw, 5rem) var(--band-inline-pad);
-  background: var(--orange);
+  width: 100%;
+  padding: clamp(3.5rem, 7vw, 5rem) 0;
+  background: var(--navy);
+}
+
+.donate-powers__panel .shell {
+  padding-inline: var(--band-inline-pad);
 }
 
 .donate-powers__title {
@@ -283,7 +307,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 100%;
-  padding: clamp(1.5rem, 2.5vw, 2rem);
+  padding: clamp(2rem, 3.25vw, 2.75rem) clamp(1.5rem, 2.5vw, 2rem);
   background: var(--white);
   border-radius: 10px;
   text-align: center;
@@ -334,7 +358,11 @@
   }
 
   .donate-powers__panel {
-    padding: clamp(2.75rem, 10vw, 3.5rem) clamp(1.25rem, 4vw, var(--band-inline-pad));
+    padding: clamp(2.75rem, 10vw, 3.5rem) 0;
+  }
+
+  .donate-powers__panel .shell {
+    padding-inline: clamp(1.25rem, 4vw, var(--band-inline-pad));
   }
 
   .donate-powers__title {
@@ -343,7 +371,11 @@
 }
 
 .donate-disclosure {
-  padding: clamp(1.75rem, 3vw, 2.25rem) 0 clamp(3rem, 6vw, 4.5rem);
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: clamp(1.75rem, 3vw, 2.25rem) var(--band-inline-pad) clamp(3rem, 6vw, 4.5rem);
+  background: var(--navy);
 }
 
 .donate-disclosure__text {
@@ -352,7 +384,7 @@
   font-size: clamp(0.9375rem, 1.3vw, 1rem);
   font-weight: 400;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.88);
   text-align: center;
   text-wrap: pretty;
   hyphens: none;

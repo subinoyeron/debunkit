@@ -71,7 +71,6 @@
   }
 
   const darkHeaderBodyClasses = [
-    "donate-page",
     "submit-page",
     "contact-page",
     "training-page",
