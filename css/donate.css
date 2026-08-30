@@ -110,7 +110,7 @@
 .donate-monthly {
   margin-top: 0;
   padding: clamp(1.25rem, 2.5vw, 1.75rem);
-  background: var(--orange);
+  background: var(--navy);
 }
 
 .donate-panel {
@@ -150,7 +150,7 @@
   font-stretch: 75%;
   font-variation-settings: "wdth" 75;
   line-height: 1.15;
-  color: var(--white);
+  color: var(--orange);
 }
 
 .donate-monthly__text {
@@ -158,7 +158,7 @@
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   font-weight: 400;
   line-height: 1.55;
-  color: var(--navy);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .donate-widget {
