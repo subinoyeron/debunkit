@@ -418,8 +418,24 @@ body.about-page {
     gap: clamp(1.5rem, 4vw, 2rem);
   }
 
+  .about-hero__intro {
+    max-width: none;
+    width: 100%;
+  }
+
+  .about-hero__lead {
+    max-width: none;
+    width: 100%;
+  }
+
   .about-hero__blocks {
     max-width: none;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .about-hero__block-title {
+    font-size: clamp(1.125rem, 4.5vw, 1.3125rem);
   }
 
   .about-cards__grid {
@@ -447,8 +463,13 @@ body.about-page {
 
   .about-hero__lead {
     max-width: none;
+    width: 100%;
     font-size: 19px;
     line-height: 1.55;
+  }
+
+  .about-hero__block-title {
+    font-size: 1.25rem;
   }
 
   .about-hero__block-text {
