@@ -210,6 +210,10 @@
   text-underline-offset: 0.15em;
 }
 
+.donate-alt-give__address {
+  color: var(--navy);
+}
+
 .donate-alt-give__text a:hover,
 .donate-alt-give__text a:focus-visible {
   color: var(--orange);
