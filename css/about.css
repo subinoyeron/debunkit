@@ -81,18 +81,6 @@ body.about-page {
   padding-top: clamp(0.75rem, 1.5vw, 1rem);
 }
 
-.about-hero__block-title {
-  margin: 0 0 0.35rem;
-  font-family: "Open Sans", system-ui, sans-serif;
-  font-size: clamp(1rem, 1.4vw, 1.125rem);
-  font-weight: 700;
-  font-stretch: 75%;
-  font-variation-settings: "wdth" 75;
-  line-height: 1.2;
-  letter-spacing: 0;
-  color: var(--orange);
-}
-
 .about-hero__block-text {
   margin: 0;
   font-family: "Open Sans", system-ui, sans-serif;
@@ -434,10 +422,6 @@ body.about-page {
     justify-self: stretch;
   }
 
-  .about-hero__block-title {
-    font-size: clamp(1.125rem, 4.5vw, 1.3125rem);
-  }
-
   .about-cards__grid {
     grid-template-columns: 1fr;
   }
@@ -466,10 +450,6 @@ body.about-page {
     width: 100%;
     font-size: 19px;
     line-height: 1.55;
-  }
-
-  .about-hero__block-title {
-    font-size: 1.25rem;
   }
 
   .about-hero__block-text {
