@@ -30,7 +30,7 @@ body.about-page {
   flex-direction: column;
   gap: clamp(1rem, 2vw, 1.35rem);
   min-width: 0;
-  max-width: clamp(18rem, 40vw, 38rem);
+  max-width: clamp(16rem, 36vw, 32rem);
 }
 
 .about-hero__title {
@@ -48,9 +48,9 @@ body.about-page {
 
 .about-hero__lead {
   margin: 0;
-  max-width: none;
+  max-width: clamp(16rem, 35vw, 30rem);
   font-family: "Open Sans", system-ui, sans-serif;
-  font-size: clamp(1.1875rem, 1.75vw, 1.3125rem);
+  font-size: clamp(1.25rem, 1.9vw, 1.4375rem);
   font-weight: 400;
   font-stretch: 100%;
   font-variation-settings: "wdth" 100;
@@ -58,6 +58,8 @@ body.about-page {
   letter-spacing: 0;
   color: rgba(255, 255, 255, 0.92);
   text-wrap: pretty;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 .about-hero__blocks {
@@ -75,8 +77,20 @@ body.about-page {
 
 .about-hero__block:not(:first-child) {
   border-top: 1px solid var(--hairline);
-  margin-top: clamp(1rem, 2vw, 1.35rem);
-  padding-top: clamp(1rem, 2vw, 1.35rem);
+  margin-top: clamp(0.75rem, 1.5vw, 1rem);
+  padding-top: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.about-hero__block-title {
+  margin: 0 0 0.35rem;
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-weight: 700;
+  font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--orange);
 }
 
 .about-hero__block-text {
@@ -86,10 +100,12 @@ body.about-page {
   font-weight: 400;
   font-stretch: 100%;
   font-variation-settings: "wdth" 100;
-  line-height: 1.55;
+  line-height: 1.5;
   letter-spacing: 0;
   color: rgba(255, 255, 255, 0.88);
   text-wrap: pretty;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 .about-page .what {
@@ -430,7 +446,8 @@ body.about-page {
   }
 
   .about-hero__lead {
-    font-size: 18px;
+    max-width: none;
+    font-size: 19px;
     line-height: 1.55;
   }
 
